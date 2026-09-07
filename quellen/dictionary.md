@@ -18,9 +18,10 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz:
 - Stand: (Datum / Erscheinungsjahr wenn bekannt)
 - Aktualität: Baseline | Update | Neu | Nische
-- Relevanz:
+- Inhalt: 2–4 Sätze — welche Variablen/Indikatoren/Spalten oder Layer im File/API stecken (Einheiten, Schlüssel wie AGS/Kreisname wenn bekannt). Keine erfundenen Spaltennamen.
+- Warum spannend: 1–2 Sätze — konkreter Nutzen für Kreis-/Gemeinde-Vergleich oder Dashboard (Join-Key, Ranking-Dimension, Heatmap).
 - Status: verifiziert | WAF | Account nötig | Katalog-only | unklar
-- Notizen:
+- Notizen: Caveats (WAF, Account, Aggregation, Coverage-Lücken)
 ```
 
 ## A — Kern / Baseline (bekannt, unverzichtbar)
@@ -37,7 +38,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: 15.05.2022
 - Aktualität: Baseline
-- Relevanz: Hochauflösende Demografie für Heatmaps und Aggregation auf Kreis/Gemeinde.
+- Inhalt: Bevölkerungszahlen in Gitterzellen (100 m / 1 km / 10 km) zum Stichtag 15.05.2022. Familienprodukt `Eigentuemerquote_in_Gitterzellen.zip` liefert Eigentümerquote je Zelle. Aggregation auf Kreis/Gemeinde über Gitter-Zuordnung möglich.
+- Warum spannend: Heatmap-Layer und feine Demografie-Normierung, wo nur Kreis-Mittelwerte zu grob sind; Join über Rasterzelle → VG250/AGS.
 - Status: verifiziert
 - Notizen: Familie inkl. Eigentümerquote `…/Eigentuemerquote_in_Gitterzellen.zip`. `/static/` kann WAF-403. Weitere Gitter (Heizung, Miete) → C.
 
@@ -51,7 +53,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: 15.05.2022
 - Aktualität: Baseline
-- Relevanz: Einwohner und Altersstruktur Stichtag 15.05.2022 für kommunales Ranking.
+- Inhalt: Einwohnerzahlen Gemeinde und Landkreis mit AGS zum Zensus-Stichtag. Pendant `Regionaltabelle_Demografie.xlsx` ergänzt Altersstruktur (Altersgruppen) für dieselben Gebietseinheiten.
+- Warum spannend: Stichtags-Einwohner und Altersprofil als Basis-Score und Nenner für Pro-Kopf-Kennzahlen im Kreis-/Gemeinde-Ranking.
 - Status: WAF
 - Notizen: Pendant Demografie `…/Regionaltabelle_Demografie.xlsx`. Destatis `/static/` intermittierend 403.
 
@@ -65,7 +68,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: live; 12411/11111 200
 - Aktualität: Baseline
-- Relevanz: Automatisierte Kreis-/Gemeinde-Zeitreihen; Kern-Bevölkerung und Gebietsfläche.
+- Inhalt: REST für Tabellenabruf (JSON/CSV/XLSX nach Token). Verifizierte Flat-CSVs: Bevölkerung Kreise `12411-01-01-4` (AGS in `KREISE`) und Gebietsfläche Kreise `11111-01-01-4`. Gemeinde-Codes `…-5` oft leerer Body.
+- Warum spannend: Automatisierte Zeitreihen Bevölkerung und Fläche → Dichte und Pro-Kopf-Nenner für alle Kreis-Rankings; Join über AGS.
 - Status: Account nötig
 - Notizen: whoami 200; tablefile ohne Token 401. Deep-Links `…/download/12411-01-01-4/ffcsv` und `11111-01-01-4/ffcsv` verifiziert. Gemeinde-ffcsv (…-5) oft leer.
 
@@ -79,7 +83,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Programmatischer Abruf amtlicher Statistik inkl. regional über AGS.
+- Inhalt: Destatis-GENESIS REST (whoami live): Tabellen, Zeitreihen und regionale Dimensionen inkl. AGS, sofern die jeweilige Statistik sie führt. Kein fertiger All-Kreise-Dump — Abruf tabellenweise nach Registrierung.
+- Warum spannend: Programmatischer Nachzug amtlicher Indikatoren, die Regionalstatistik nicht als ffcsv liefert; Ergänzungspfad für Dashboard-Pipelines.
 - Status: Account nötig
 - Notizen: whoami HTTP 200.
 
@@ -93,7 +98,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: INKAR 2025
 - Aktualität: Baseline
-- Relevanz: ~600 Raumindikatoren bundesweit — zentral für Atlas/Ranking.
+- Inhalt: Bulk mit ca. 600 Raumindikatoren der BBSR-Raumbeobachtung für u. a. Kreise (KRE) und Gemeinden (GEM). JSON-Nebenwege: Gebiete `…/GetGebieteZumRaumbezug/KRE` bzw. `/GEM`, Werte via POST `…/Table/GetDataTable`.
+- Warum spannend: Fertige Multi-Indikator-Matrix für Atlas-Scoring ohne Einzelstatistik-Joins; Raumbezugsschlüssel für Kreis-/Gemeinde-Karten.
 - Status: verifiziert
 - Notizen: TLS ggf. `curl -k`. JSON: `https://www.inkar.de/Wizard/GetGebieteZumRaumbezug/KRE` · `/GEM` · POST `https://www.inkar.de/Table/GetDataTable`. ROR und Indikatorenkatalog → C.
 
@@ -107,7 +113,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: 31.12. / 01.01. Produktfamilie aktuell
 - Aktualität: Baseline
-- Relevanz: Amtliche Grenzen + AGS für Joins.
+- Inhalt: Amtliche Verwaltungsgrenzen Landkreis und Gemeinde (UTM32 Shape) mit AGS und Namen. Familie: Stand 01.01 Shape, Excel-Ebenen (Schlüssel/Namen ohne Geometrie), VG250-EW mit Einwohner und Fläche, WFS `wfs_vg250-ew`.
+- Warum spannend: Geometrie- und AGS-Rückgrat für alle Joins, Choroplethen und Normierung (EW/Fläche) im Dashboard.
 - Status: verifiziert
 - Notizen: Familie: 01.01 Shape, Excel-Ebenen, VG250-EW 31.12., WFS `https://sgx.geodatenzentrum.de/wfs_vg250-ew`. GE250 (ROR) ist nicht VG250 → C.
 
@@ -121,7 +128,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: CC BY 4.0
 - Stand: 2025 Jahresraster; Monat Jul 2025; Normal 1991–2020
 - Aktualität: Baseline
-- Relevanz: Flächendeckende Dürre für Ranking/Heatmaps.
+- Inhalt: 1-km-Raster Deutschland: Jahres-Dürreindex (de Martonne), Monats-Dürreindex, Multi-annual 1991–2020, tägliche Bodenfeuchte (AMBAV, TGZ), monatlicher Niederschlag. `regional_averages_DE` nur Länder, nicht Kreis.
+- Warum spannend: Klima-/Agrar-Heatmaps und Kreis-Mittel aus Raster für Vergleich Dürrebelastung und Niederschlag.
 - Status: verifiziert
 - Notizen: Familie: monthly drought, multi-annual 1991–2020, daily soil_moist 202608, monthly precipitation. regional_averages_DE nur Länder.
 
@@ -135,7 +143,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: 2024
 - Aktualität: Baseline
-- Relevanz: Amtliche Wahlergebnisse kreisscharf (BTW nur Wahlkreis).
+- Inhalt: Amtliche EW24-Ergebnisse kreisscharf (AGS 5-stellig) mit Stimmenanteilen der Parteien. BTW 2025 im Testkern nur Wahlkreis + Gemeinde↔WKR-Zuordnung — Stimmen nicht kreisscharf.
+- Warum spannend: Politische Zusammensetzung als Ranking-/Kontext-Dimension direkt auf Kreisebene joinbar (AGS).
 - Status: verifiziert
 - Notizen: BTW 2025 im Testkern als Wahlkreis + Gemeinde↔WKR-Zuordnung; Stimmen nicht kreisscharf.
 
@@ -149,7 +158,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: Metadaten je Datensatz
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Discovery weiterer Kreis-/Gemeinde-Datensätze.
+- Inhalt: Metadatenkatalog (Titel, Tags, Ressourcen-URLs, Lizenzen) — keine Indikatorwerte. `package_search` filtert nach Stichwort/Organisation.
+- Warum spannend: Discovery-Schleife für neue Kreis-/Gemeinde-Downloads; Treffer werden in dieses Dictionary übernommen.
 - Status: verifiziert
 - Notizen: Katalog, keine Werte. Länderportale → D.
 
@@ -163,7 +173,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: BKA-Nutzungsbedingungen
 - Stand: 2024
 - Aktualität: Baseline
-- Relevanz: Kriminalität kreisscharf mit Häufigkeitszahl.
+- Inhalt: Polizeiliche Kriminalstatistik Kreise: Fallzahlen und Häufigkeitszahl (HZ je 100.000 EW) für ausgewählte Straftaten/Gruppen. Keine Gemeindeebene. T20 Tatverdächtige und kommunale Mirrors → C-Notizen.
+- Warum spannend: Sicherheits-Score und Heatmap kreisscharf (Fälle + HZ) als eigene Ranking-Achse neben Sozial-/Wirtschaftsindikatoren.
 - Status: WAF
 - Notizen: GovData-Katalog `…/t01-grundtabelle-kreise-…`. Direktdownload mit Mandats-UA oft 303/400/403. T20 Tatverdächtige und kommunale Mirrors → C.
 
@@ -181,7 +192,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: bis 2023; BS Feb 2025
 - Aktualität: Update
-- Relevanz: Primär- und verfügbares Einkommen je Einwohner kreisscharf.
+- Inhalt: Primär- und verfügbares Einkommen der privaten Haushalte je Einwohner, kreisscharf (Landkreis / krfr. Stadt). Geschwister: R2B1 BIP `vgrdl_r2b1_bs2024.xlsx`, R2B2 Löhne `vgrdl_r2b2_bs2025.xlsx`. RS-82411 Deep-Link leer.
+- Warum spannend: Kaufkraft-/Wohlstands-Ranking je Kreis; Join über Kreisschlüssel mit VG250 und anderen Sozio-Layern.
 - Status: verifiziert
 - Notizen: RS-82411 Deep-Link leer. Geschwister: R2B1 BIP `vgrdl_r2b1_bs2024.xlsx`, R2B2 Löhne `vgrdl_r2b2_bs2025.xlsx` (bis 2024).
 
@@ -195,7 +207,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: bis 2024; BS Aug 2025
 - Aktualität: Update
-- Relevanz: Aktuellste kreisscharfe Lohnreihe.
+- Inhalt: Arbeitnehmerentgelt und Bruttolöhne/-gehälter kreisscharf, Berichtsjahre bis 2024 (aktuellster der drei VGRdL-Kreisbände). Ergänzt R2B3 (verfügbares Einkommen) und R2B1 (BIP).
+- Warum spannend: Lohnniveau als Ranking-Dimension und Abgleich zu verfügbarem Einkommen / SvB-Beschäftigung.
 - Status: verifiziert
 - Notizen: Neueste der drei VGRdL-Kreisbände.
 
@@ -209,7 +222,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: BA/BMAS (Quellenangabe)
 - Stand: Apr 2026 / Pub Aug 2026
 - Aktualität: Update
-- Relevanz: Maschinenlesbare SGB-II-Kennzahlen Bulk.
+- Inhalt: Bulk-CSV der §48a-Kennzahlen (System A) auf Jobcenter-/Träger-Ebene; Dateien `dl_48a_daten_statistikba_*.csv`. Excel-ZIP parallel. Regionale Zuordnung auf Kreis oft über Trägergebiet nötig.
+- Warum spannend: SGB-II-Leistungsfähigkeit maschinenlesbar für Sozial-Ranking; parallel zur BA-API-Zeitreihe `upd-ba-api-grusi`.
 - Status: verifiziert
 - Notizen: Excel-ZIP parallel. Dateien `dl_48a_daten_statistikba_*.csv`.
 
@@ -223,7 +237,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: täglich ~05:00
 - Aktualität: Update
-- Relevanz: PV/Wind/Speicher/KWK-Stammdaten, aggregierbar auf Gemeinde/Kreis.
+- Inhalt: Stammdaten aller registrierten EE-/KWK-/Speicheranlagen (Standort, Leistung, Energieträger, Betriebsstatus u. a.). Roh-XML; Aggregation auf Gemeinde/Kreis über AGS selbst (z. B. open-mastr). Dateiname rotiert täglich.
+- Warum spannend: EE-Leistung und Anlagenzahl je Kreis/Gemeinde für Energie-Ranking und Heatmaps (PV/Wind/Speicher).
 - Status: verifiziert
 - Notizen: Dateiname rotiert täglich. Portal `…/MaStR/Datendownload`. Parser: open-mastr. Stichtag `…/Stichtag/Gesamtdatenexport_20260701_26.1.zip`.
 
@@ -237,7 +252,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: BNetzA / Gigabit-Grundbuch
 - Stand: Ende 2025
 - Aktualität: Update
-- Relevanz: Gigabit/Breitbandversorgung Kreis und Gemeinde.
+- Inhalt: Festnetz-/Gigabit-Versorgungsanteile Bund–Land–Kreis–Gemeinde (Ende 2025, `bba_12_2025`). Analyseplattform zugangsgeschützt; Tabellen-XLSX offen.
+- Warum spannend: Digitalisierungs-Score und Versorgungsranking kreis- und gemeindescharf; Join über Gebietsschlüssel.
 - Status: verifiziert
 - Notizen: Analyseplattform zugangsgeschützt. Raster → `upd-breitband-gitter`.
 
@@ -251,7 +267,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: BNetzA / Gigabit-Grundbuch
 - Stand: 2025-12-31
 - Aktualität: Update
-- Relevanz: Hochauflösendes Digital-Layer.
+- Inhalt: Festnetzversorgung je Gitterzelle als GeoPackage (Stand 2025-12-31). Mobilfunk-Pendant unter `…/MobilfunkMonitoring/…`. Aggregation auf Kreis/Gemeinde über Zellenmittel.
+- Warum spannend: Feiner Digital-Heatmap-Layer, wo Gemeinde-Mittel Versorgungsinseln verdecken.
 - Status: verifiziert
 - Notizen: Mobilfunk-Pendant `…/MobilfunkMonitoring/2512/202601_MobilfunkMonitoring.zip`.
 
@@ -265,7 +282,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: 2024
 - Aktualität: Update
-- Relevanz: Bautätigkeit kreisscharf — Dynamik zum Zensus-Bestand.
+- Inhalt: Baufertigstellungen Wohngebäude kreisscharf (Tabelle 31121-01-02-4, ffcsv). Verwandt: Nichtwohngebäude `31121-04-01-4`. Dynamik gegenüber Zensus-Gebäudebestand.
+- Warum spannend: Bauaktivität als Ranking-Dimension Wohnen/Wachstum; Join AGS/`KREISE` zum Bestand.
 - Status: verifiziert
 - Notizen: Verwandt 31121-04-01-4 Nichtwohngebäude.
 
@@ -279,7 +297,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: Statistik der BA
 - Stand: Aug 2026
 - Aktualität: Update
-- Relevanz: ALO + Unterbeschäftigung monatsaktuell kreisscharf.
+- Inhalt: Eckwerte Arbeitslosigkeit und Unterbeschäftigung je Kreis (Parameter `Kreis=NAME`). Ein Region/Request; Kreisnamen aus `DR-LZR-persistListenfelderJSON.js`. Gemeinde nur mit Clientzertifikat.
+- Warum spannend: Monatsaktuelle ALO-Quote für Arbeitsmarkt-Ranking und Zeitreihen-Charts je Kreis.
 - Status: verifiziert
 - Notizen: 1 Region/Request. Namen aus `…/DR-LZR-persistListenfelderJSON.js`. Gemeinde nur mit Clientzertifikat.
 
@@ -293,7 +312,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: Statistik der BA
 - Stand: Feb/Aug 2026
 - Aktualität: Update
-- Relevanz: SvB monatsaktuell ohne Zertifikat.
+- Inhalt: Sozialversicherungspflichtig Beschäftigte (SvB) Eckwerte kreisscharf (`Kreis AO=NAME`), ohne Clientzertifikat. Zeitreihe über `EckwerteZeitreiheBST`. Doku API-BST.html.
+- Warum spannend: Beschäftigungsstand und -dynamik als Gegenstück zur ALO-Quote im Kreisvergleich.
 - Status: verifiziert
 - Notizen: Zeitreihe `EckwerteZeitreiheBST`. Doku API-BST.html.
 
@@ -307,7 +327,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: Statistik der BA
 - Stand: Aug 2026
 - Aktualität: Update
-- Relevanz: Kreisscharfe Grundsicherung-Zeitreihe.
+- Inhalt: Grundsicherung SGB II Zeitreihe Eckwerte je Kreis (`Kreis=NAME`). Parallel zum §48a-Bulk `upd-sgb2-aug2026`.
+- Warum spannend: Monats-/Zeitreihen-Sozialhilfe-Proxy kreisscharf für Dashboard-Trends und Ranking.
 - Status: verifiziert
 - Notizen: Parallel zu upd-sgb2-aug2026.
 
@@ -321,7 +342,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: 2024
 - Aktualität: Update
-- Relevanz: Wanderungssalden Kreis↔Kreis.
+- Inhalt: Zu- und Fortzüge zwischen allen Kreisen (Herkunft×Ziel-Matrix) für 2024. Deckt Wanderung, nicht Tagespendel (kein BA-Pendler-API; RS-19321 leer).
+- Warum spannend: Nettozuwanderung und Austauschbeziehungen als Mobilitäts-/Attraktivitäts-Indikator im Kreisranking.
 - Status: verifiziert
 - Notizen: Deckt nicht Tagespendel ab.
 
@@ -335,7 +357,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: amtlich / MaStR-basiert
 - Stand: 26.06.2026
 - Aktualität: Update
-- Relevanz: Kompakte Kraftwerks-/EE-Übersicht ohne 3-GB-XML.
+- Inhalt: Kraftwerke ≥10 MW einzeln (Standort, Energieträger, Leistung); Kleinanlagen nach Land aggregiert. XLSX-Pendant und Zu-/Rückbau-Datei parallel. Kompakter als MaStR-XML.
+- Warum spannend: Schneller Energieerzeugungs-Überblick je Standort/Land ohne 3-GB-Parse; Großanlagen-Marker auf Karte.
 - Status: verifiziert
 - Notizen: ≥10 MW einzeln; Kleinanlagen nach Land. XLSX-Pendant + ZuUndRueckbau.
 
@@ -353,7 +376,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: 15.05.2022
 - Aktualität: Nische
-- Relevanz: Wärme/Gebäude und Wohnungsdruck rasterscharf — Access-Pfad bei Destatis-WAF.
+- Inhalt: FeatureServer mit Gitterattributen zu Heizungsart, Energieträger der Heizung, Leerstandsquote und durchschnittlicher Nettokaltmiete (€/m²). Destatis-Zips katalogbelegt, oft 403 — ArcGIS-Query als Access-Pfad.
+- Warum spannend: Wärme-/Wohnungsdruck-Heatmaps und Kreis-Aggregation, wenn Destatis-Static WAF blockiert.
 - Status: verifiziert
 - Notizen: Destatis-Zips `Zensus2022_Heizungsart.zip`, `Zensus2022_Energietraeger.zip`, `Leerstandsquote_in_Gitterzellen.zip`, `Zensus2022_Durchschn_Nettokaltmiete.zip` katalogbelegt, oft 403.
 
@@ -367,7 +391,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: Runde 4 (2022), Akt. 01.06.2023
 - Aktualität: Nische
-- Relevanz: Bundesweite Schienenlärm-Isophonen.
+- Inhalt: Schienenlärm-Isophonen bundesweit (LDEN/LNight) als GeoPackage (~843 MB) und WFS. EEA END-XLSX-Pfade tot.
+- Warum spannend: Lärmbelastungsanteil je Kreis/Gemeinde aus Flächenanteil der Isophonen — Umwelt-Score neben Luft/Dürre.
 - Status: verifiziert
 - Notizen: WFS `https://geoinformation.eisenbahn-bundesamt.de/wfs/eba/services/wfs`. EEA END-XLSX-Pfade tot.
 
@@ -381,7 +406,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: BfG / Wasserwirtschaft
 - Stand: HWRMRL-Zyklus; live 2026
 - Aktualität: Nische
-- Relevanz: Hochwasser-Exposure flächendeckend.
+- Inhalt: Hochwassergefahren- und -risikokarten (HQ-Szenarien) als ArcGIS-MapServer-Familie, z. B. `HWRMRL_DE_MH`. opengeodata.nrw Wasser-HW-Pfad 404.
+- Warum spannend: Exposure-Anteil überschwemmungsgefährdeter Fläche je Kreis für Risiko-/Standort-Ranking.
 - Status: verifiziert
 - Notizen: Beispiel `…/HWRMRL/HWRMRL_DE_MH/MapServer`. opengeodata.nrw `…/wasser/hw/` 404.
 
@@ -395,7 +421,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: UBA / dl-de/by-2-0
 - Stand: live
 - Aktualität: Nische
-- Relevanz: Flächenhafter Wärmebedarf ohne proprietären Atlas.
+- Inhalt: Flächenhafter Nutzenergiebedarf Wärme (EnEff-RL) als Raster-MapServer (EPSG:25832). Schwesterdienst Kälte `KlEn/EnEff_RL_Nutzenergiebedarf_Kaelte`. Kein proprietärer Wärmeatlas nötig.
+- Warum spannend: Wärmebedarfs-Heatmap und Kreis-Mittel als Kontext zu MaStR-EE und Zensus-Heizung.
 - Status: verifiziert
 - Notizen: Schwester `KlEn/EnEff_RL_Nutzenergiebedarf_Kaelte`.
 
@@ -409,7 +436,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: Copernicus/EEA
 - Stand: 2018
 - Aktualität: Nische
-- Relevanz: Landnutzung für Umwelt-/Siedlungsindikatoren.
+- Inhalt: CORINE Land Cover 2018 Klassen (Siedlung, Acker, Wald, Wasser u. a.) über UBA- und EEA-MapServer. CLC2021+ separat bei Copernicus.
+- Warum spannend: Siedlungs-/Freiflächenanteil je Kreis für Umwelt- und Flächennutzungs-Indikatoren.
 - Status: verifiziert
 - Notizen: EEA `https://image.discomap.eea.europa.eu/arcgis/rest/services/Corine/CLC2018_WM/MapServer?f=pjson`. CLC2021+ separat Copernicus.
 
@@ -423,7 +451,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: UBA
 - Stand: live
 - Aktualität: Nische
-- Relevanz: Boden jenseits DWD-Dürre.
+- Inhalt: Bodenerosions-Layer `SDE.BoFlLa_Erosion` flächendeckend DE (MapServer). Ergänzt DWD-Dürre/Bodenfeuchte um Bodenthema.
+- Warum spannend: Agrar-/Umwelt-Risikoanteil je Kreis aus Rasteraggregation.
 - Status: verifiziert
 - Notizen: Layer `SDE.BoFlLa_Erosion`.
 
@@ -437,7 +466,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: UBA / dl-de
 - Stand: Layer 2024
 - Aktualität: Nische
-- Relevanz: Luftqualität jenseits Dedup-OI_NO2.
+- Inhalt: Ozon-Jahresmittel-Immissionsraster, u. a. Layer `OI_O3_2024_ANNUAL`. Dedup zu OI_NO2 aus dem Testkern.
+- Warum spannend: Zweite Luftqualitäts-Achse für Umwelt-Ranking und Heatmaps neben NO₂/PM.
 - Status: verifiziert
 - Notizen: Layer `OI_O3_2024_ANNUAL`.
 
@@ -451,7 +481,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: UBA / dl-de
 - Stand: Layer 2024
 - Aktualität: Nische
-- Relevanz: Zweiter Luft-Indikator neben Ozon.
+- Inhalt: PM2.5-Jahresmittel-Raster (u. a. 2024-Layer); verwandt `Lu/OI_PM10__ANNUAL`.
+- Warum spannend: Feinstaub als Gesundheits-/Umwelt-Score je Kreis aus Rastermittel.
 - Status: verifiziert
 - Notizen: Auch `Lu/OI_PM10__ANNUAL`.
 
@@ -465,7 +496,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: live 2026
 - Aktualität: Nische
-- Relevanz: Schulen/Schüler/Hochschulen kreisscharf bundesweit.
+- Inhalt: REST/WADL für kreisscharfe Bildungsstatistik (Schulen, Schüler, Hochschulen u. a. Themen der Kommunalen Bildungsdatenbank). tablefile seit 2025 nur mit Registrierung; kein öffentlicher All-Kreise-Flat-CSV.
+- Warum spannend: Bundesweite Bildungsschicht für Kreisranking ohne Landes-Silo-Joins.
 - Status: Account nötig
 - Notizen: whoami 200. tablefile Registrierung seit 2025.
 
@@ -479,7 +511,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: OD-NRW / dl-de/by-2-0
 - Stand: bis 2025
 - Aktualität: Nische
-- Relevanz: Kreis-Bildungsmatrix NRW — kompensiert bundesweite Flat-CSV-Lücke.
+- Inhalt: CSV mit Header u. a. `JAHR;SCHULFORM;KREIS;SCHULEN;SCHUELER_INNEN;…` (Lehrkräfte-Spalten im File). Nur NRW; kompensiert bundesweite Flat-CSV-Lücke.
+- Warum spannend: Sofort joinbare Kreis-Bildungsmatrix NRW für Schülerdichte und Schulform-Mix.
 - Status: verifiziert
 - Notizen: Nur NRW. Header JAHR;SCHULFORM;KREIS;SCHULEN;SCHUELER_INNEN;…
 
@@ -493,7 +526,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: 2023
 - Aktualität: Nische
-- Relevanz: Gemeinde-/Kreis-Einkommen ohne GENESIS-UI.
+- Inhalt: Verfügbares Einkommen Tabelle 82411-01i für Gemeinde und Kreis in NRW als Direkt-CSV (Downloader-Pattern `…/tables/<code>_00.csv`). Workarounds für leere RS-/GENESIS-Deep-Links.
+- Warum spannend: Gemeindefeines Einkommen-Ranking in NRW ohne GENESIS-UI; Muster für andere Länder-LDBs.
 - Status: verifiziert
 - Notizen: Downloader-Pattern `…/tables/<code>_00.csv` stabiler als `/online?operation=download`.
 
@@ -507,7 +541,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: 15.12.2023
 - Aktualität: Nische
-- Relevanz: Pflegebedürftige nach Pflegegrad kreisscharf.
+- Inhalt: Pflegebedürftige ambulant nach Pflegegrad, kreisscharf NRW (22411-02i). Destatis Kreisvergleich-Publikation eingestellt — LDB als Ersatzpfad.
+- Warum spannend: Pflege-Nachfrage je Kreis für Gesundheits-/Sozial-Score in NRW.
 - Status: verifiziert
 - Notizen: Destatis Kreisvergleich-Publikation eingestellt.
 
@@ -521,7 +556,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: 2024–2026 / Quote bis 2024
 - Aktualität: Nische
-- Relevanz: SGB XII und Armuts-Proxy gemeindescharf.
+- Inhalt: Grundsicherung im Alter/Erwerbsminderung (22151-01i) gemeindescharf Quartale; Mindestsicherungsquote 22811-01i; Sozialhilfe-Ausgaben Kreise 22111-01i.
+- Warum spannend: SGB-XII- und Armuts-Proxy unterhalb der Kreisebene für NRW-Gemeinde-Dashboard.
 - Status: verifiziert
 - Notizen: 22811-01i Quote; 22111-01i Sozialhilfe-Ausgaben Kreise.
 
@@ -535,7 +571,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: aktueller LDB
 - Aktualität: Nische
-- Relevanz: Stationäre Versorgungsstruktur NRW.
+- Inhalt: Krankenhäuser und Betten kreisscharf NRW (23111-01i). Bund RS 23111-01-05-4 Deep-Link leer.
+- Warum spannend: Stationäre Versorgungsdichte (Betten je EW) als Gesundheits-Ranking-Dimension NRW.
 - Status: verifiziert
 - Notizen: Bund RS 23111-01-05-4 Deep-Link leer.
 
@@ -549,7 +586,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: Katalog 2026-09-06
 - Aktualität: Nische
-- Relevanz: Gemeindescharfe Arbeitslosigkeit NRW.
+- Inhalt: Arbeitslose nach Geschlecht gemeindescharf NRW (13211-05i). Zusatz: SvB nach WZ Kreise 13111-46i Stichtag 31.12.2025.
+- Warum spannend: Gemeinde-ALO unterhalb BA-API (die Gemeinde nur mit Zertifikat liefert) für NRW-Drilldown.
 - Status: verifiziert
 - Notizen: 13111-46i SvB nach WZ Kreise Stichtag 31.12.2025.
 
@@ -563,7 +601,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: ab 2018; Sample 2024
 - Aktualität: Nische
-- Relevanz: Tourismusintensität kreisscharf.
+- Inhalt: Übernachtungen/Tourismusstatistik kreisscharf (45412-01-03-4). SN-Gemeinde-Pendant `45412-001M` via statistik.sachsen.de.
+- Warum spannend: Tourismusintensität (Übernachtungen je EW) als Wirtschafts-Ranking-Achse.
 - Status: verifiziert
 - Notizen: SN Gemeinde `45412-001M` via statistik.sachsen.de GenOnline ffcsv.
 
@@ -577,7 +616,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: bis 2025
 - Aktualität: Nische
-- Relevanz: Wirtschaftsdynamik kreisscharf.
+- Inhalt: Gewerbean- und -abmeldungen Jahressummen kreisscharf (`KREISE`). Hessen-CKAN-Spiegel `genesisws/downloader/…/52311-01-04-4_06.csv`.
+- Warum spannend: Gründungs-/Abgangsnetto als Dynamik-Indikator im Wirtschaftsranking.
 - Status: verifiziert
 - Notizen: genesisws-Spiegel `…/genesisws/downloader/06/tables/52311-01-04-4_06.csv` (Hessen-CKAN).
 
@@ -591,7 +631,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: ab 2019; Sample 2024
 - Aktualität: Nische
-- Relevanz: Unternehmensstruktur kreisscharf.
+- Inhalt: Unternehmensregister-Statistik: Niederlassungen nach Größenklassen kreisscharf. Weitere Codes: `52111-04-01-4` (WZ), `52111-05-*` Beschäftigte.
+- Warum spannend: Unternehmensstruktur (KMU vs. Groß) als Standort- und Wirtschaftsprofil je Kreis.
 - Status: verifiziert
 - Notizen: Weitere `52111-04-01-4` (WZ), `52111-05-*` Beschäftigte.
 
@@ -605,7 +646,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: Sample 2024
 - Aktualität: Nische
-- Relevanz: Wirtschaftsstruktur jenseits Bevölkerung.
+- Inhalt: Erwerbstätige nach Wirtschaftsbereichen kreisscharf (Erwerbstätigenrechnung der Länder, 13312-01-05-4).
+- Warum spannend: Sektorstruktur (Industrie/Dienstleistung/…) als Wirtschaftsprofil neben reiner Bevölkerungszahl.
 - Status: verifiziert
 - Notizen: Erwerbstätigenrechnung der Länder.
 
@@ -619,7 +661,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: VBB Open Data
 - Stand: laufend
 - Aktualität: Nische
-- Relevanz: ÖPNV BE+BB maschinenlesbar; DELFI nur nach Login.
+- Inhalt: GTFS Sollfahrplan Berlin-Brandenburg (~83 MB): Haltestellen, Linien, Fahrten. DELFI bundesweit nur nach Login — VBB als regionaler Direktlink.
+- Warum spannend: ÖPNV-Angebotsdichte (Haltestellen/Fahrten je Gemeinde) für BE+BB-Mobilitäts-Score.
 - Status: verifiziert
 - Notizen: ~83 MB.
 
@@ -633,7 +676,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: Attribution (ENTSO-E/BNetzA u. a.)
 - Stand: live; Projektion bis 2030
 - Aktualität: Nische
-- Relevanz: Nationale Leistungs-/Ausbau-Zeitreihen als Benchmark zu MaStR.
+- Inhalt: Nationale installierte Leistung und Ausbau-Zeitreihen (`installed_power`, auch `public_power`, `total_power`). Kein Kreisraster. HEAD 405 — GET nutzen.
+- Warum spannend: Bundes-Benchmark und Zielpfad gegen regionale MaStR-Aggregate.
 - Status: verifiziert
 - Notizen: HEAD 405 — GET. Auch `public_power`, `total_power`. Kein Kreisraster.
 
@@ -647,7 +691,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: öffentlicher Data-Hub
 - Stand: täglich
 - Aktualität: Nische
-- Relevanz: Online-Leistungen nach ARS 12-stellig.
+- Inhalt: Online-Leistungen / PVOG-Export je ARS (12-stellig); ARS-Liste `…/open-ars`. Accept `application/octet-stream` (text/csv → 406). Kein fertiger Bund-Score-CSV.
+- Warum spannend: Digitalisierungsgrad der Verwaltung je Gemeinde/Kreis (ARS) als eigene Dashboard-Achse.
 - Status: verifiziert
 - Notizen: Accept `application/octet-stream` (text/csv → 406). ARS-Liste `…/open-ars`. UI dashboard-daten.digitale-verwaltung.de. Kein fertiger Bund-Score-CSV.
 
@@ -661,7 +706,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: aktuell/
 - Aktualität: Nische
-- Relevanz: ROR/BBSR-Raumgliederungen — nicht VG250.
+- Inhalt: Gebietseinheiten 1:250000 inkl. Raumordnungsregionen / BBSR-Raumgliederungen — nicht VG250. Layer-Inventar im ZIP prüfen.
+- Warum spannend: Join-Geometrie für ROR-Indikatoren (INKAR) oberhalb der Kreisebene.
 - Status: verifiziert
 - Notizen: Layer-Inventar im ZIP prüfen.
 
@@ -675,7 +721,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: Gebietsstand 31.12.2023 / INKAR 2025
 - Aktualität: Nische
-- Relevanz: ROR-Schlüssel für Joins; Meta für Single-Indicator.
+- Inhalt: ROR-Gebietsschlüssel als JSON; Indikatorenübersicht XLSX `Uebersicht der Indikatoren.xlsx`. Keine direkten Einzel-Indikator-File-URLs außer Bulk `kern-inkar-2025`.
+- Warum spannend: Meta für Single-Indicator-Auswahl und ROR-Joins neben KRE/GEM.
 - Status: verifiziert
 - Notizen: Katalog `https://www.inkar.de/documents/Uebersicht%20der%20Indikatoren.xlsx`. TLS oft `-k`. Keine direkten Indikator-File-URLs außer Bulk.
 
@@ -689,7 +736,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: Landeswahlleitung BY
 - Stand: 08.10.2023
 - Aktualität: Nische
-- Relevanz: Maschinenlesbare LTW BY.
+- Inhalt: LTW Bayern 2023 Ergebnisse Stimmkreise (CSV, datumspräfigierter Dateiname). Wahlkreise-CSV und XML parallel.
+- Warum spannend: Landespolitische Stimmenanteile für BY-Layer; Aggregation auf Kreis über Stimmkreis-Zuordnung.
 - Status: verifiziert
 - Notizen: Dateinamen datumspräfigiert. Wahlkreise-CSV + XML parallel.
 
@@ -703,7 +751,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: TLS
 - Stand: 2024-09-01
 - Aktualität: Nische
-- Relevanz: TH Landtag gemeindescharf.
+- Inhalt: Endgültige LTW TH 2024 gemeindescharf (`LWINFOG2024.xlsx`); Wahlkreise in `LWINFO2024.xlsx`. HE/HH/SN landesweit ohne geprüften CSV in diesem Lauf.
+- Warum spannend: Gemeinde-Wahlergebnisse TH direkt für Karte und Ranking ohne Wahlkreis-Aggregation.
 - Status: verifiziert
 - Notizen: `LWINFO2024.xlsx` Wahlkreise. HE/HH/SN landesweit ohne geprüften CSV in diesem Lauf.
 
@@ -717,7 +766,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de-by-2.0
 - Stand: 2025
 - Aktualität: Nische
-- Relevanz: Sozialindikatoren stadtteilscharf.
+- Inhalt: Sozialmonitoring-Ergebnistabellen 2025 stadtteilscharf. Ergänzend: Regionalstatistik-WFS Stadtteile und Kita-Betreuungsquote OAF/WFS.
+- Warum spannend: Kleinräumige Sozialindikatoren HH für Stadtteil-Dashboard und Benchmark zu Kreis-Bund-Layern.
 - Status: verifiziert
 - Notizen: Regionalstatistik WFS `https://geodienste.hamburg.de/wfs_regionalstatistische_daten_stadtteile`. Kita OAF `https://api.hamburg.de/datasets/v1/betreuungsquote_kindertagesbetreuung`.
 
@@ -731,7 +781,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-zero-de/2.0
 - Stand: Katalog 2026-09-07
 - Aktualität: Nische
-- Relevanz: Schulbezirke und Bildungsstandorte landesweit HE.
+- Inhalt: Schulbezirke und Bildungsstandorte Hessen als WFS/WMS (`hsbk`, `bildungsstandorte`). Kommunal: Darmstadt Sozialatlas 2025 XLSX.
+- Warum spannend: Bildungslandschaft HE als Kartenlayer; kommunale Sozialdaten als Drilldown-Muster.
 - Status: verifiziert
 - Notizen: Bildungsstandorte `…/ows/bildungsstandorte`. Darmstadt Sozialatlas 2025 `https://opendata.darmstadt.de/sites/default/files/Daten_Sozialatlas_2025_0.xlsx`.
 
@@ -745,7 +796,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: LfU / Energie-Atlas
 - Stand: Layer 2025-08 / 2026-08
 - Aktualität: Nische
-- Relevanz: EE-Indikatoren gemeindescharf flächendeckend BY.
+- Inhalt: WMS-Layer Anteil EE am Stromverbrauch u. a. EE-Statistik gemeinde- und kreisscharf BY. Kein landesweiter Bulk-CSV; kommunale ArcGIS-Hub-CSVs (z. B. Cham) als Muster.
+- Warum spannend: EE-Selbstversorgungsgrad je Gemeinde in BY für Energie-Ranking und Karte.
 - Status: verifiziert
 - Notizen: Kein landesweiter Bulk-CSV. Kommunal Cham ArcGIS Hub CSV als Muster.
 
@@ -759,7 +811,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: MobiData BW / daten.bw
 - Stand: DTV2024; Datei 2026-06-26
 - Aktualität: Nische
-- Relevanz: Landesweites Verkehrsmessnetz BW.
+- Inhalt: Straßenverkehrszählstellen landesweit BW mit DTV2024; Endergebnisse-ZIP und Pkm/Zugkm-XLSX im Portal.
+- Warum spannend: Verkehrslast-Punkte und Kreis-Aggregate für Mobilitäts-/Erreichbarkeitskontext BW.
 - Status: verifiziert
 - Notizen: Endergebnisse ZIP `…/Ergebnisse_2024_Excel.zip`. Pkm/Zugkm XLSX im Portal.
 
@@ -773,7 +826,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: amtlich
 - Stand: Katalog 2026
 - Aktualität: Nische
-- Relevanz: Tourismus gemeindescharf SN.
+- Inhalt: Tourismus Gemeinden SN (45412-001M): Einrichtungen, Betten, Übernachtungen. `format=ffcsv` Pflicht; Range-Requests können 0 B. Unfälle Kreise `46241-208K`.
+- Warum spannend: Gemeindescharfe Tourismusintensität SN unterhalb der Bundes-Kreistabelle.
 - Status: verifiziert
 - Notizen: `format=ffcsv` Pflicht; Range-Requests können 0 B. Unfälle Kreise `46241-208K`.
 
@@ -791,7 +845,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: Metadaten je Datensatz
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Bundeskatalog — Discovery Kreis/Gemeinde.
+- Inhalt: Bundesweiter Metakatalog: Suche/Filter nach Organisation, Tags, Format; liefert Ressourcen-URLs und Lizenzfelder, keine Messwerte.
+- Warum spannend: Einstieg für Dictionary-Nachzüge (Kreis/Gemeinde-Downloads) und Dedup gegen bestehende IDs.
 - Status: Katalog
 - Notizen: Startliste Bund. UI govdata.de/suche.
 
@@ -805,7 +860,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Amtliche Statistik + Zensus-Gitter.
+- Inhalt: Einstieg zu GENESIS, Open-Data-Bereich und Zensus-Gitter/Regionaltabellen. Static-Downloads oft WAF; REST in A.
+- Warum spannend: Quelle für neue amtliche Tabellen und Zensus-Nebenprodukte, die nach A/C wandern.
 - Status: Katalog
 - Notizen: Static-Zensus oft WAF. GENESIS REST → A.
 
@@ -819,7 +875,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Kreis-/Gemeinde-Tabellen (ffcsv + REST).
+- Inhalt: Katalog und Download von Kreis-/Gemeinde-Tabellen (ffcsv `…/download/<code>/ffcsv`) plus REST. Viele thematische Deep-Links leer — dann VGRdL/LDB.
+- Warum spannend: Primärer Fundort für neue kreisscharfe Statistik-Codes, die als B/C-Einträge landen.
 - Status: Katalog
 - Notizen: Deep-Links für Nische oft leer; REST-Registrierung.
 
@@ -833,7 +890,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0 / zero
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Landesportal NRW + LDB + opengeodata.nrw.
+- Inhalt: Landesportal NRW inkl. Verweise auf LDB-Downloader und opengeodata.nrw (z. B. DVG2). Thematische CSVs oft über LDB-Pattern.
+- Warum spannend: Pipeline für NRW-Nischen (Einkommen, Pflege, ALO-Gemeinde) in Abschnitt C.
 - Status: Katalog
 - Notizen: DVG2 im Testkern. LDB-Downloader für thematische CSVs.
 
@@ -847,7 +905,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: je Datensatz
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Discovery BY inkl. kommunaler ArcGIS-Hubs und Energie-Atlas.
+- Inhalt: Discovery BY inkl. kommunaler ArcGIS-Hubs und Energie-Atlas-Dienste. Kein einheitliches Bulk-Schema.
+- Warum spannend: Fundort für BY-Energie/LTW/kommunale Downloads, die nach C wandern.
 - Status: Katalog
 - Notizen: Energie-Atlas WMS, München/Ingolstadt/Cham-Hits in C.
 
@@ -861,7 +920,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: je Datensatz
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Discovery BW; MobiData als Mobility-Hub.
+- Inhalt: CKAN-Suche BW (Base nicht Root `/api`). Mobility-Hub MobiData für Verkehr/ÖPNV.
+- Warum spannend: Discovery für BW-Mobilitäts- und Fachdaten (z. B. SVZ) ins Dictionary.
 - Status: Katalog
 - Notizen: CKAN-Base nicht Root `/api`. MobiData mobidata-bw.de.
 
@@ -875,7 +935,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Stadtteil-Sozial- und Regionalstatistik HH.
+- Inhalt: Stadtteil- und Fachdaten HH; Geodienste WFS und api.hamburg.de OAF. Sozialmonitoring und Kita als konkrete Hits in C.
+- Warum spannend: Kleinräumige HH-Quellen für Dictionary-Einträge unter Soziales/Bildung.
 - Status: Katalog
 - Notizen: geodienste.hamburg.de WFS; api.hamburg.de OAF.
 
@@ -889,7 +950,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: je Datensatz (oft dl-zero-de/2.0)
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Discovery HE; Bildungsatlas, kommunale Sozialatlanten.
+- Inhalt: Landes-Discovery HE; Bildungsatlas-Geodienste und kommunale Sozialatlanten (Darmstadt).
+- Warum spannend: Nachzug HE-Bildung/Sozial für C; oft dl-zero-de/2.0.
 - Status: Katalog
 - Notizen: Darmstadt als starker Kommunal-Hub.
 
@@ -903,7 +965,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: je Datensatz
 - Stand: unklar
 - Aktualität: Baseline
-- Relevanz: Discovery NI — in diesem Lauf kaum frische thematische Direct-Downloads.
+- Inhalt: Geodaten-/Open-Data-Einstieg NI. In diesem Lauf kaum frische thematische Direct-Downloads; GovData-Org `land-niedersachsen` dünn.
+- Warum spannend: Watchlist für künftige NI-Kreis/Gemeinde-Hits (LGLN/LSN, Hannover, Braunschweig).
 - Status: Katalog
 - Notizen: GovData-Org `land-niedersachsen` dünn. Follow-up LGLN/LSN, Hannover, Braunschweig.
 
@@ -917,7 +980,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: je Datensatz
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Discovery SN; GenOnline ffcsv für Kreis/Gemeinde.
+- Inhalt: Katalog plus statistik.sachsen.de GenOnline (ffcsv mit `format=ffcsv` + Voll-GET). Tourismus-Gemeinde und Unfälle als Hits.
+- Warum spannend: SN-Gemeinde-Tabellen für Dictionary C unter Wirtschaft/Mobilität.
 - Status: Katalog
 - Notizen: statistik.sachsen.de GenOnline braucht `format=ffcsv` + Voll-GET.
 
@@ -931,7 +995,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: dl-de/by-2-0 / zero
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Discovery BE; datenregister oft 403/429 — GovData-Spiegel.
+- Inhalt: Berliner Open-Data-Katalog; datenregister oft 403/429 — GovData-Spiegel nutzen. ALKIS-Bezirke im Testkern; thematisch GSSA, Liegenschaftsenergie.
+- Warum spannend: Discovery BE-Bezirks-/Fachlayer für Dictionary und Geobasis-Joins.
 - Status: Katalog
 - Notizen: ALKIS-Bezirke im Testkern. Thematisch: GSSA, Liegenschaftsenergie.
 
@@ -945,7 +1010,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: je Datensatz
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Discovery HB — in diesem Lauf keine brauchbaren 2024–2026 Direct-File-Hits.
+- Inhalt: Transparenz-/Open-Data-Einstieg HB. In diesem Lauf keine brauchbaren 2024–2026 Direct-File-Hits.
+- Warum spannend: Watchlist für Stadtteil/Sozial/Energie-Downloads, sobald Direct-URLs stabil sind.
 - Status: Katalog
 - Notizen: Follow-up Stadtteil/Sozial/Energie.
 
@@ -959,7 +1025,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: je Datensatz
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: EU-Metakatalog über DE-Portale.
+- Inhalt: EU-Metakatalog mit DE-Filter; oft Spiegel von GovData/Länderportalen, selten neue Direct-URLs.
+- Warum spannend: Zweitkanal-Discovery und Abgleich, welche DE-Datensätze EU-seitig indexiert sind.
 - Status: Katalog
 - Notizen: Startliste. Oft Spiegel von GovData/Länder.
 
@@ -973,7 +1040,8 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Lizenz: je Datensatz
 - Stand: live
 - Aktualität: Baseline
-- Relevanz: Kommunale Hubs nur bei klarer Download-URL (Beispiel Cham EE-Anlagen).
+- Inhalt: Kommunale Hubs mit CSV/GeoJSON nur aufnehmen, wenn klare Direct-Download-URL vorliegt (Muster Cham EE-Anlagen).
+- Warum spannend: Kommunale Feindaten und Muster-CSVs für Länder ohne landesweiten Bulk.
 - Status: Katalog
 - Notizen: Startliste: nur bei klarem Direct-Download.
 
