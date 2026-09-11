@@ -1,9 +1,9 @@
 # Open-Data Quellenverzeichnis (Dictionary)
 
-Stand: 2026-09-07. Lebendes Verzeichnis für Dashboard/Landkreisranking.
+Stand: 2026-09-08 (Mail-Sync). Lebendes Verzeichnis für Dashboard/Landkreisranking.
 Scope: Deutschland, Ebene Landkreis | Gemeinde | Raster. Nur Einträge mit Download- oder API-URL.
 
-Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) aus Nischenlauf `2026-09-07-nische.md` + Prio-1 `2026-09-07-prio1.md`. Portale (D) aus `startliste.md`. Länder-Datenpunkte (E) aus `2026-09-07-laender.md`.
+Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) aus Nischenlauf `2026-09-07-nische.md` + Prio-1 `2026-09-07-prio1.md`. Portale (D) aus `startliste.md`. Länder-Datenpunkte (E) aus `2026-09-07-laender.md`. Mail-Sync 2026-09-08 aus `2026-09-08.md` / `verschickt.md`.
 
 ## Schema (pro Eintrag)
 
@@ -126,12 +126,12 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Format: ESRI ASCII `.asc.gz` / TGZ
 - URL: https://opendata.dwd.de/climate_environment/CDC/grids_germany/annual/drought_index/grids_germany_annual_drought_index_202517.asc.gz
 - Lizenz: CC BY 4.0
-- Stand: 2025 Jahresraster; Monat Jul 2025; Normal 1991–2020
+- Stand: 2025 Jahresraster; Monat Aug 2026 (202608); Normal 1991–2020
 - Aktualität: Baseline
 - Inhalt: 1-km-Raster Deutschland: Jahres-Dürreindex (de Martonne), Monats-Dürreindex, Multi-annual 1991–2020, tägliche Bodenfeuchte (AMBAV, TGZ), monatlicher Niederschlag. `regional_averages_DE` nur Länder, nicht Kreis.
 - Warum spannend: Klima-/Agrar-Heatmaps und Kreis-Mittel aus Raster für Vergleich Dürrebelastung und Niederschlag.
 - Status: verifiziert
-- Notizen: Familie: monthly drought, multi-annual 1991–2020, daily soil_moist 202608, monthly precipitation. regional_averages_DE nur Länder.
+- Notizen: Familie: monthly drought/precipitation/sunshine. Mail-Sync 2026-09-08: Monat Aug 2026 siehe upd-dwd-duerre-202608, upd-dwd-niederschlag-202608, upd-dwd-sonne-202608. regional_averages_DE nur Länder.
 
 ### kern-ew24
 - Name: Europawahl 2024 Ergebnisse Kreisebene
@@ -263,14 +263,14 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Thema: Energie
 - Ebene: gemischt
 - Format: ZIP → XML (~3 GB)
-- URL: https://download.marktstammdatenregister.de/Gesamtdatenexport_20260907_26.1.zip
+- URL: https://download.marktstammdatenregister.de/Gesamtdatenexport_20260908_26.1.zip
 - Lizenz: dl-de/by-2-0
-- Stand: täglich ~05:00
+- Stand: täglich ~05:00; Stichtag 20260908_26.1 (~3.11 GB, LM 2026-09-08)
 - Aktualität: Update
 - Inhalt: Stammdaten aller registrierten EE-/KWK-/Speicheranlagen (Standort, Leistung, Energieträger, Betriebsstatus u. a.). Roh-XML; Aggregation auf Gemeinde/Kreis über AGS selbst (z. B. open-mastr). Dateiname rotiert täglich.
 - Warum spannend: EE-Leistung und Anlagenzahl je Kreis/Gemeinde für Energie-Ranking und Heatmaps (PV/Wind/Speicher).
 - Status: verifiziert
-- Notizen: Dateiname rotiert täglich. Portal `…/MaStR/Datendownload`. Parser: open-mastr. Stichtag `…/Stichtag/Gesamtdatenexport_20260701_26.1.zip`.
+- Notizen: Dateiname rotiert täglich. Mail-Sync 2026-09-08: URL auf Gesamtdatenexport_20260908_26.1.zip. Parser: open-mastr. Portal …/MaStR/Datendownload.
 
 ### upd-breitbandatlas-2025
 - Name: Breitbandatlas Festnetz Ende 2025
@@ -473,14 +473,14 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Thema: Sonstiges
 - Ebene: Raster
 - Format: ZIP → CSV
-- URL: https://data.bundesnetzagentur.de/Bundesnetzagentur/GIGA/DE/MobilfunkMonitoring/2512/202601_MobilfunkMonitoring.zip
+- URL: https://data.bundesnetzagentur.de/Bundesnetzagentur/GIGA/DE/MobilfunkMonitoring/2606/202607_MobilfunkMonitoring.zip
 - Lizenz: dl-de/by-2-0
-- Stand: 2512 / Paket 202601
+- Stand: 2606 / Paket 202607 (~101.5 MB, LM 2026-08-26)
 - Aktualität: Update
-- Inhalt: Mobilfunkversorgung je Gitterzelle (`202601_MobilfunkMonitoring.csv` im ZIP, ~107 MB).
+- Inhalt: Mobilfunkversorgung je Gitterzelle (`202607_MobilfunkMonitoring.csv` im ZIP, ~101.5 MB).
 - Warum spannend: Mobilfunk-Abdeckung als Digital-Score neben Festnetz-Breitband-Gitter; Aggregation Mittelwert je Kreis.
 - Status: verifiziert
-- Notizen: Eigene ID (bisher nur Notiz unter Breitband-Gitter). Ranking-Dimension Mobilfunk-Versorgung.
+- Notizen: Mail-Sync 2026-09-08: Pack …/2606/202607_… statt …/2512/202601_…. Zwischenmonate 202602–202606/202608–202609: 404.
 
 ### upd-ba-pendler
 - Name: BA Pendleratlas / BBSR Pendeldistanzen
@@ -511,6 +511,49 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Warum spannend: Stammdaten-Join-Key ARS/AGS + aktuelle Fläche/EW für Normierung.
 - Status: verifiziert
 - Notizen: Destatis GV100AD2QAktuell.zip **403 WAF**. Ranking-Dimension Stammdaten.
+
+### upd-dwd-duerre-202608
+- Name: DWD monatlicher Dürreindex (de Martonne) August 2026
+- Betreiber: DWD
+- Thema: Klima
+- Ebene: Raster
+- Format: ESRI ASCII `.asc.gz`
+- URL: https://opendata.dwd.de/climate_environment/CDC/grids_germany/monthly/drought_index/08_Aug/grids_germany_monthly_drought_index_202608.asc.gz
+- Lizenz: CC BY 4.0 (DWD Terms of use)
+- Stand: 202608 (Aug 2026); LM 2026-09-02
+- Aktualität: Update
+- Inhalt: 1-km-Monatsraster Deutschland Dürreindex de Martonne für August 2026. Aggregation Kreis-Mittel über Rasterzelle möglich. Familie zu kern-dwd-duerre.
+- Warum spannend: Aktueller Monatsstand Dürrebelastung für Klima-/Agrar-Heatmaps und Kreisvergleich.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Neuer als bekanntes Jul-2025. Verzeichnis listet auch 202508 (Vorjahr).
+### upd-dwd-niederschlag-202608
+- Name: DWD monatliches Niederschlagsraster August 2026
+- Betreiber: DWD
+- Thema: Klima
+- Ebene: Raster
+- Format: ESRI ASCII `.asc.gz`
+- URL: https://opendata.dwd.de/climate_environment/CDC/grids_germany/monthly/precipitation/08_Aug/grids_germany_monthly_precipitation_202608.asc.gz
+- Lizenz: CC BY 4.0 (DWD Terms of use)
+- Stand: 202608 (Aug 2026); LM 2026-09-02
+- Aktualität: Update
+- Inhalt: 1-km-Monatsraster Niederschlag August 2026. Kreis-Mittel aus Raster; Ergänzung zum Dürreindex derselben Periode.
+- Warum spannend: Niederschlag als zweite Klima-Achse neben Dürreindex für Kreis-Heatmaps.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Neuer als bekanntes Jul-2025.
+### upd-dwd-sonne-202608
+- Name: DWD Sonnenscheindauer monatlich August 2026
+- Betreiber: DWD
+- Thema: Klima
+- Ebene: Raster
+- Format: ASC.GZ
+- URL: https://opendata.dwd.de/climate_environment/CDC/grids_germany/monthly/sunshine_duration/08_Aug/grids_germany_monthly_sunshine_duration_202608.asc.gz
+- Lizenz: GeoNutzV / DWD Open Data
+- Stand: 202608
+- Aktualität: Neu
+- Inhalt: Monatliches Sonnenscheindauer-Raster August 2026 (CDC grids_germany). Aggregation auf Kreis über Rastermittel.
+- Warum spannend: Solar-/Hitze-Proxy neben Globalstrahlung und Dürre für Klima-Dashboard.
+- Status: unklar
+- Notizen: Mail 2026-09-08. HTTP im Tagesfile noch pending — URL aus DWD-Pfad übernommen, Abruf nicht bestätigt.
 
 ## C — Nischen / Spezial
 
@@ -1025,6 +1068,357 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Warum spannend: Solarpotenzial-Proxy / Hitze-Kontext je Kreis.
 - Status: verifiziert
 - Notizen: Prio-1 Bonus. Ranking-Dimension Solar-/Strahlung.
+
+### nisch-bwl-btw25-umrechnung
+- Name: Bundeswahlleiterin BTW25 — Umrechnung Wahlkreise BTW21→BTW25
+- Betreiber: Bundeswahlleiterin
+- Thema: Wahlen
+- Ebene: gemischt
+- Format: CSV (~115 KB)
+- URL: https://www.bundeswahlleiterin.de/dam/jcr/201df610-802b-4121-9e6b-5d04504df5c8/btwkr25_umrechnung_btw21.csv
+- Lizenz: dl-de/by-2-0
+- Stand: BTW 2025
+- Aktualität: Neu
+- Inhalt: Schlüssel zur Umrechnung/Zuordnung Wahlkreise BTW21 auf BTW25-Zuschnitt. Ermöglicht Zeitvergleiche nach WKR-Reform.
+- Warum spannend: Join-Hilfe für BTW-Zeitreihen bei geänderten Wahlkreisgrenzen; Aggregation Richtung Kreis möglich.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200, CL ~115 KB.
+### nisch-bwl-btw25-wbz
+- Name: Bundeswahlleiterin BTW25 — Wahlbezirke (ZIP)
+- Betreiber: Bundeswahlleiterin
+- Thema: Wahlen
+- Ebene: gemischt
+- Format: ZIP (~6 MB)
+- URL: https://www.bundeswahlleiterin.de/dam/jcr/e79a7bd3-0607-4e87-9752-8e601e299e00/btw25_wbz.zip
+- Lizenz: dl-de/by-2-0
+- Stand: BTW 2025
+- Aktualität: Neu
+- Inhalt: Amtliche Wahlbezirksdaten BTW25 (feinste Wahleinheiten). Aggregation auf Gemeinde/Kreis möglich.
+- Warum spannend: Feinste amtliche Wahleinheit für kleinräumige Wahl-/Demografie-Joins.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200, CL ~6 MB.
+### nisch-bwl-ew24-kreise
+- Name: Bundeswahlleiterin EW24 — Kreisliste (Open Data)
+- Betreiber: Bundeswahlleiterin
+- Thema: Wahlen
+- Ebene: Landkreis
+- Format: CSV UTF-8 (~21 KB)
+- URL: https://www.bundeswahlleiterin.de/dam/jcr/a31ee172-27ac-461e-9a5d-face3a24d66f/ew24_kreise_utf8.csv
+- Lizenz: dl-de/by-2-0
+- Stand: EW 2024
+- Aktualität: Neu
+- Inhalt: Amtliche Kreiszuschnitte / Kreisliste zur Europawahl 2024. Ergänzt bekannte kerg2-Ergebnisse.
+- Warum spannend: Referenzliste Kreise/krfr. Städte für EW24-Joins und Gebietsabgleich.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200, CL ~21 KB.
+### nisch-bwl-ew24-strukturdaten
+- Name: Bundeswahlleiterin EW24 — Strukturdaten
+- Betreiber: Bundeswahlleiterin
+- Thema: Wahlen
+- Ebene: gemischt
+- Format: CSV (~153 KB)
+- URL: https://www.bundeswahlleiterin.de/dam/jcr/c8d845ab-1d69-4c16-a47a-9ed600641217/ew24_strukturdaten.csv
+- Lizenz: dl-de/by-2-0
+- Stand: EW 2024
+- Aktualität: Neu
+- Inhalt: Strukturdaten parallel zu den Wahlergebnissen EW24 (sozioökonomischer Kontext je Gebietseinheit).
+- Warum spannend: Sozio-Kontext zu EW24-Ergebnissen; Analogon zu BTW25-Strukturdaten.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200, CL ~153 KB.
+### nisch-cham-gebaeude-waermekataster
+- Name: Landkreis Cham — Gebäude-Wärmekataster (Shapefile)
+- Betreiber: LRA Cham / open.bydata
+- Thema: Energie
+- Ebene: gemischt
+- Format: ZIP → Shapefile (~20,6 MB)
+- URL: https://data-lra-cha.opendata.arcgis.com/api/download/v1/items/f15c0c6bc217466090b35e4a758c0b73/shapefile?layers=60
+- Lizenz: open.bydata / LRA Cham
+- Stand: govdata metadata_modified 2026-09-07
+- Aktualität: Neu
+- Inhalt: Gebäude-Wärmekataster als Shapefile auf Kreisebene Cham (Layer 60). Direkt downloadbar.
+- Warum spannend: Seltene kreisscharfe Gebäude-Wärme Open Data — EPK-Fallstudie Landkreis.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200, CL ~20.6 MB.
+### nisch-fr-waermekataster-wms
+- Name: Freiburg Wärmekataster 2023 (Wärmedichte Raster/Baublock/Straße)
+- Betreiber: Stadt Freiburg
+- Thema: Energie
+- Ebene: Raster
+- Format: OGC WMS 1.3.0
+- URL: https://geoportal.freiburg.de/qgis_wms/uwsa_waerme/waermekataster2023?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0
+- Lizenz: Stadt Freiburg (Geoportal)
+- Stand: Wärmedichten Stand 2021; Dienst waermekataster2023
+- Aktualität: Neu
+- Inhalt: Kommunaler Wärmeatlas (Wärmedichte Raster/Baublock/Straße, Energieträger-Anteile) als WMS. Kein Bulk-CSV; GetCapabilities/GetMap.
+- Warum spannend: EPK-Musterstadt — kommunale Wärmedichte zum Vergleich mit UBA/NRW-Wärmeprodukten.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200.
+### nisch-hh-stromverbrauch-waermekataster
+- Name: Hamburg Wärmekataster — Stromverbrauch
+- Betreiber: Stadt Hamburg / Transparenzportal
+- Thema: Energie
+- Ebene: gemischt
+- Format: ZIP → CSV (Download-API)
+- URL: https://geodienste.hamburg.de/download?url=https://geodienste.hamburg.de/HH_WFS_Waermekataster_Stromverbrauch&f=csv
+- Lizenz: dl-de/by-2-0
+- Stand: WFS/Download live 2026-09-08
+- Aktualität: Neu
+- Inhalt: Stromverbrauch kleinräumig aus dem HH-Wärmekataster-Kontext (WFS→CSV Download, ~17.8 MB).
+- Warum spannend: Strom neben Wärmebedarf für Gebäudeenergie-Dashboard HH.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200, CL ~17.8 MB.
+### nisch-hh-waermebedarf
+- Name: Hamburg Wärmekataster — Nutzwärmebedarf / Wärmedichte (CSV-Download)
+- Betreiber: Stadt Hamburg / Transparenzportal
+- Thema: Energie
+- Ebene: gemischt
+- Format: ZIP → CSV (Download-API)
+- URL: https://geodienste.hamburg.de/download?url=https://geodienste.hamburg.de/HH_WFS_Waermekataster_Waermebedarf&f=csv
+- Lizenz: dl-de/by-2-0 (Transparenzportal HH)
+- Stand: WFS live; Caps listet Nutzwärmebedarf saniert/unsaniert + Wärmedichte Baublock
+- Aktualität: Neu
+- Inhalt: Nutzwärmebedarf und Wärmedichte kleinräumig (Baublock/Gebäudecluster) via Geodienste-Download aus WFS.
+- Warum spannend: EPK-Referenzstadt HH — Gebäudewärme neben bekanntem Wärmenetz-KWP.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200.
+### nisch-nw-dachpv-gemeinde
+- Name: NRW Solarkataster — Dach-PV nach Gebäudekategorien Gemeindeebene
+- Betreiber: Open.NRW / LANUK
+- Thema: Energie
+- Ebene: Gemeinde
+- Format: XLSX (~1,5 MB)
+- URL: https://www.opengeodata.nrw.de/produkte/umwelt_klima/energie/solarkataster/photovoltaik/Dach-PV-nach-Gebaeudekategorien-Gemeindeebene_Excel.xlsx
+- Lizenz: dl-de/by-2-0 (Open.NRW / LANUK)
+- Stand: Bestand Zeitreihe ab 1990; Potenzial LANUK März 2025; Datei LM 2026-03-12
+- Aktualität: Neu
+- Inhalt: Gemeindescharfe Dach-PV Leistung/Ertrag nach Gebäudekategorie (Wohn/Gewerbe/Öffentlich/Landwirtschaft), AGS.
+- Warum spannend: EPK-Kern — Dach-PV-Potenzial und Bestand je Gemeinde ohne Gebäude-GIS.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200, CL ~1.5 MB.
+### nisch-nw-ee-gpkg
+- Name: NRW Erneuerbare-Energien-Anlagen GeoPackage
+- Betreiber: LANUK / Open.NRW
+- Thema: Energie
+- Ebene: gemischt
+- Format: ZIP → GeoPackage (~6 MB)
+- URL: https://www.opengeodata.nrw.de/produkte/umwelt_klima/energie/ee/Standorte-Strom-EE-NRW_EPSG25832_GeoPackage.zip
+- Lizenz: LANUK / Open.NRW
+- Stand: LM 2026-09-02
+- Aktualität: Neu
+- Inhalt: EE-Anlagenstandorte NRW als GeoPackage (Punkte → aggregierbar Gemeinde/Kreis).
+- Warum spannend: Feinauflösung neben VWE-Tabellen; Kartenlayer und Kreis-Summen.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200, CL ~6 MB.
+### nisch-nw-ee-potenziale
+- Name: NRW Energieatlas — Potenziale Erneuerbare Energien (Gemeinde)
+- Betreiber: LANUK / Open.NRW
+- Thema: Energie
+- Ebene: Gemeinde
+- Format: XLSX (~385 KB)
+- URL: https://www.opengeodata.nrw.de/produkte/umwelt_klima/energie/ee/EE-Potenziale-Energieatlas-NRW_EPSG25832_Excel.xlsx
+- Lizenz: LANUK / Open.NRW
+- Stand: LM 2026-04-08
+- Aktualität: Neu
+- Inhalt: EE-Potenziale je Gemeinde NRW (EPSG:25832 Excel). AGS-Join möglich.
+- Warum spannend: Ranking/EPK-Ausbaukorridore gemeindescharf ohne eigene MaStR-Aggregation.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200.
+### nisch-nw-standorte-strom-waerme
+- Name: NRW Standorte Strom und Wärme (Anlagenliste Excel)
+- Betreiber: LANUK / Open.NRW
+- Thema: Energie
+- Ebene: gemischt
+- Format: XLSX (~14,7 MB)
+- URL: https://www.opengeodata.nrw.de/produkte/umwelt_klima/energie/ee/NW-Standorte-Strom-Waerme-NRW_EPSG25832_Excel.xlsx
+- Lizenz: LANUK / Open.NRW
+- Stand: LM 2026-08-19
+- Aktualität: Neu
+- Inhalt: Punktliste Strom- und Wärme-Anlagen NRW; aggregierbar auf Gemeinde/Kreis.
+- Warum spannend: Feinauflösung neben VWE-Aggregaten für Standortkarten und Summen.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200, CL ~14.7 MB.
+### nisch-nw-strom-vwe
+- Name: NRW Energieatlas — Stromerzeugung/-speicher aggregiert Verwaltungseinheiten
+- Betreiber: LANUK NRW
+- Thema: Energie
+- Ebene: Gemeinde
+- Format: XLSX (~14,5 MB)
+- URL: https://www.opengeodata.nrw.de/produkte/umwelt_klima/energie/ee/NW-Strom-VWE-Aggregiert_EPSG25832_Excel.xlsx
+- Lizenz: LANUK NRW (Quellenangabe)
+- Stand: LM 2026-08-18; PV Dach/Frei/Stecker, Speicher, konventionell
+- Aktualität: Neu
+- Inhalt: Gemeindescharfe Strom-/PV-/Speicher-Bestände NRW nach Verwaltungseinheit (AGS). Fertiges MaStR-Aggregat.
+- Warum spannend: EE-Bestand je Gemeinde ohne eigenen MaStR-Parser; Dashboard-Join über AGS.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200, CL ~14.5 MB.
+### nisch-nw-waerme-vwe
+- Name: NRW Energieatlas — Wärmeerzeugung aggregiert Verwaltungseinheiten
+- Betreiber: LANUK NRW
+- Thema: Energie
+- Ebene: Gemeinde
+- Format: XLSX (~574 KB)
+- URL: https://www.opengeodata.nrw.de/produkte/umwelt_klima/energie/ee/NW-Waerme-VWE-Aggregiert_EPSG25832_Excel.xlsx
+- Lizenz: LANUK NRW (Quellenangabe)
+- Stand: FIS Energieatlas Wärmekataster; LM 2026-08-18
+- Aktualität: Neu
+- Inhalt: Gemeindescharfe Wärmeerträge (u. a. Deponie-/Gruben-/Klärgas) aus NRW-Wärmekataster, aggregiert VWE/AGS.
+- Warum spannend: EPK — Wärmeerzeugung je Gemeinde neben Strom-VWE.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200.
+### nisch-sl-waermekataster-wfs
+- Name: Saarland Wärmekataster WFS
+- Betreiber: Geoportal Saarland / GDI-DE
+- Thema: Energie
+- Ebene: gemischt
+- Format: OGC WFS 2.0
+- URL: https://geoportal.saarland.de/arcgis/services/Internet/Waermekataster_WFS/MapServer/WFSServer?request=GetCapabilities&VERSION=2.0.0&SERVICE=WFS
+- Lizenz: GDI-DE / Saarland (Quellenangabe)
+- Stand: 7 FeatureTypes; Metadaten europa/govdata modified 2026-03…2026-08
+- Aktualität: Neu
+- Inhalt: Landesweiter Wärmekataster inkl. Wärmebedarf Wohnen/Nicht-Wohnen, Quellen, Netze; Caps nennt u. a. Waermebedarf_Wohnen_2016, Einsparung_bis_2035.
+- Warum spannend: EPK-tauglicher Landes-Wärmekataster Saarland als WFS.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200.
+### nisch-uba-eeg-rnr-2026
+- Name: UBA EEG Referenznetzwerke RNR 2025/2026 (PLZ/Gemeinde)
+- Betreiber: UBA
+- Thema: Energie
+- Ebene: Gemeinde
+- Format: ArcGIS MapServer
+- URL: https://datahub.uba.de/server/rest/services/Global/EEG_RNR_2025_2026/MapServer?f=pjson
+- Lizenz: UBA
+- Stand: Layer RNR …_2025/_2026
+- Aktualität: Neu
+- Inhalt: EEG-Referenznetzwerke auf PLZ/Gemeinde (GEM). Layer für 2025 und 2026.
+- Warum spannend: Netz-/EEG-Kontext gemeindescharf neben MaStR und Energieatlas.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200.
+### nisch-uba-eneff-kaelte
+- Name: UBA EnEff-RL Nutzenergiebedarf Kälte (Raster)
+- Betreiber: UBA
+- Thema: Energie
+- Ebene: Raster
+- Format: ArcGIS MapServer
+- URL: https://datahub.uba.de/server/rest/services/KlEn/EnEff_RL_Nutzenergiebedarf_Kaelte/MapServer?f=pjson
+- Lizenz: UBA / dl-de/by-2-0
+- Stand: Layer Rasterzellen_Hotmaps_Kaelte
+- Aktualität: Neu
+- Inhalt: Kältebedarf-Raster (EnEff-RL). Schwester zum bekannten Wärme-Dienst nisch-uba-eneff-waerme.
+- Warum spannend: Kälte ergänzt Wärme für Gebäudeenergie-Kontext und Kreis-Mittel.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200. Schwester zu nisch-uba-eneff-waerme.
+### nisch-uba-heisse-tage
+- Name: UBA Heiße Tage (Jahreslayer 2000–)
+- Betreiber: UBA
+- Thema: Klima
+- Ebene: Raster
+- Format: ArcGIS MapServer
+- URL: https://datahub.uba.de/server/rest/services/Global/Heisse_Tage/MapServer?f=pjson
+- Lizenz: UBA
+- Stand: 26 Jahreslayer HeisseTage_2000 …
+- Aktualität: Neu
+- Inhalt: Jahreslayer Anzahl heißer Tage ab 2000 als MapServer-Raster.
+- Warum spannend: Hitze-Kontext neben DWD Hot-Days; Kreis-Mittel für Klima-Exposure.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200.
+### nisch-uba-n-tj2026
+- Name: UBA Hintergrundbelastung Stickstoff — Update Juli 2026
+- Betreiber: UBA
+- Thema: Umwelt
+- Ebene: Raster
+- Format: ArcGIS MapServer
+- URL: https://datahub.uba.de/server/rest/services/Lu/Hintergrund%C2%ADbelastungs%C2%ADdaten_Stickstoff_TJ2026/MapServer?f=pjson
+- Lizenz: UBA / dl-de
+- Stand: mapName Hintergrundbelastungsdaten Stickstoff_Juli_2026_final; Deposition 2017-2019
+- Aktualität: Neu
+- Inhalt: Aktualisierter Stickstoff-Hintergrundbelastungsdienst (TJ2026). Raster-Deposition.
+- Warum spannend: Umwelt-Nebenindikator Stickstoff; neuer Dienststand Juli 2026.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200. URL enthält soft-hyphen (%C2%AD) wie im Dienstpfad.
+### nisch-uba-nfbuie-kreis
+- Name: UBA NFBÜ 2023 — Stickstoff-Flächenbilanz-Überschuss Kreise
+- Betreiber: UBA
+- Thema: Umwelt
+- Ebene: Landkreis
+- Format: ArcGIS MapServer
+- URL: https://datahub.uba.de/server/rest/services/NFBUe_2023/MapServer?f=pjson
+- Lizenz: UBA
+- Stand: 3-Jahres-Mittel Zeitreihe Felder ab 1995_1997; Titel NFBÜ Kreise
+- Aktualität: Neu
+- Inhalt: Kreisscharfer Stickstoff-Flächenbilanz-Überschuss (NFBÜ) als Zeitreihe.
+- Warum spannend: Agrar-/Stickstoffbilanz je Kreis als Umwelt-Nebenindikator.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200.
+### nisch-uba-pm10-annual
+- Name: UBA PM10 Jahresmittel (OI_PM10_ANNUAL)
+- Betreiber: UBA
+- Thema: Umwelt
+- Ebene: Raster
+- Format: ArcGIS MapServer
+- URL: https://datahub.uba.de/server/rest/services/Lu/OI_PM10__ANNUAL/MapServer?f=pjson
+- Lizenz: UBA / dl-de
+- Stand: Titel OI_PM10_A_Farbverlauf - 17_06_2026; Layer bis OI_PM10_2024_ANNUAL
+- Aktualität: Neu
+- Inhalt: PM10-Jahresmittel-Immissionsraster. Verwandt zu nisch-pm25 (PM2.5).
+- Warum spannend: Luftqualität-Raster für Kreis-Mittel neben PM2.5/O3/NO2.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200. Zuvor nur Verweis in nisch-pm25-Notizen.
+### nisch-uba-soes-kreis
+- Name: UBA SOES — Siedlungs-/Verkehrsflächen-Szenarien Kreise
+- Betreiber: UBA
+- Thema: Umwelt
+- Ebene: Landkreis
+- Format: ArcGIS MapServer (Kreis-Polygone)
+- URL: https://datahub.uba.de/server/rest/services/KlEn/soes/MapServer?f=pjson
+- Lizenz: UBA
+- Stand: Szenarien Stabilität u. a.; Layer kreis_SSuVV3045 …
+- Aktualität: Neu
+- Inhalt: Kreisscharfe Siedlungs-/Verkehrsflächen-Szenarien (SuV-Zuwachs/Rückgang).
+- Warum spannend: Siedlungsdruck/Flächenkontext für EPK und Umwelt-Ranking.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200.
+### nisch-uba-tropennaechte
+- Name: UBA Tropennächte (Jahreslayer 2000–)
+- Betreiber: UBA
+- Thema: Klima
+- Ebene: Raster
+- Format: ArcGIS MapServer
+- URL: https://datahub.uba.de/server/rest/services/Global/Tropennaechte/MapServer?f=pjson
+- Lizenz: UBA
+- Stand: 26 Jahreslayer TN_2000 …
+- Aktualität: Neu
+- Inhalt: Jahreslayer Tropennächte ab 2000 als MapServer-Raster.
+- Warum spannend: Nacht-Hitze / Kühlbedarf-Proxy neben Heiße Tage und DWD-Hitze.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200.
+### nisch-uba-waermedichte-kreis
+- Name: UBA EnEff-RL Wärmedichte nach Kreis (2018/2030/2050)
+- Betreiber: UBA
+- Thema: Energie
+- Ebene: Landkreis
+- Format: ArcGIS FeatureServer (JSON Query)
+- URL: https://datahub.uba.de/server/rest/services/Hosted/EnEffRL_WaermeDichte_alleJahre/FeatureServer?f=pjson
+- Lizenz: UBA / dl-de/by-2-0
+- Stand: Felder wd_2018 / wd_2030 / wd_2050; Layer WaermeDichte_alleJahre
+- Aktualität: Neu
+- Inhalt: Kreisscharfe Wärmedichte-Szenarien 2018/2030/2050 (NUTS-3). FeatureServer-Query ohne Geometrie möglich.
+- Warum spannend: EPK/Wärmeplanung — kreisscharfe Wärmedichte ohne proprietären Wärmeatlas; Ergänzung zu EnEff-Nutzenergie-Raster.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200. Query-Sample: https://datahub.uba.de/server/rest/services/Hosted/EnEffRL_WaermeDichte_alleJahre/FeatureServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&resultRecordCount=1&f=json
+### nisch-uba-wkv-kreis
+- Name: UBA EnEff-RL Wärmeverbrauch / Nutzenergie nach Kreis & Sektor
+- Betreiber: UBA
+- Thema: Energie
+- Ebene: Landkreis
+- Format: ArcGIS FeatureServer (JSON Query)
+- URL: https://datahub.uba.de/server/rest/services/Hosted/EnEff_RL_WKV_alleJahre/FeatureServer?f=pjson
+- Lizenz: UBA / dl-de/by-2-0
+- Stand: Sample 2018; Sektor WG, Anwendung RW+WW, Nutzenergie GWh
+- Aktualität: Neu
+- Inhalt: Sektorale Nutzenergie Wärme je Kreis (u. a. Wohngebäude). Join über NUTS-ID/Kreisname.
+- Warum spannend: EPK — kreisscharfer Wärmeverbrauch nach Sektor als Ranking-Dimension.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. HTTP 200.
 
 ## D — Portale / Discovery
 
@@ -3194,21 +3588,358 @@ Kernquellen (A) aus Testlauf `2026-09-07-test.md`. Updates (B) und Nischen (C) a
 - Status: verifiziert
 - Notizen: Land MV. Aus Länder-Crawl 2026-09-07. AGS/ARS je nach Datei — siehe Inhalt/Ebene.
 
+### be-gender-datenreport-2023-bevoelkerung
+- Name: Gender Datenreport Berlin 2023 – Bevölkerung
+- Betreiber: Senatsverwaltung Berlin (Frauen/Gleichstellung)
+- Thema: Demografie
+- Ebene: gemischt
+- Format: XLSX
+- URL: https://www.berlin.de/sen/frauen/gleichstellung/gender-daten/daten/2023_1_1_bevoelkerung_final.xlsx
+- Lizenz: cc-by
+- Stand: 2023
+- Aktualität: Neu
+- Inhalt: Tabellen aus Gender-Datenreport 2023 zur Bevölkerung (Land/Bezirk).
+- Warum spannend: Gender-differenzierte Bevölkerungszahlen Berlin für Demografie-Kontext.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land BE. HTTP 200.
+### bw-konstanz-gemeinderat-stadtteile
+- Name: Konstanz Gemeinderatswahl Stadtteile 2009–2024
+- Betreiber: Stadt Konstanz / offenedaten-konstanz
+- Thema: Wahlen
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://offenedaten-konstanz.de/sites/default/files/gemeinderatswahl_ergebnis_stadtteile_2009_2024_0_0.csv
+- Lizenz: dl-de/by-2-0
+- Stand: 2009–2024
+- Aktualität: Neu
+- Inhalt: Stadtteil-Zeitreihe Gemeinderatswahlergebnisse Konstanz 2009–2024.
+- Warum spannend: Kommunale Wahl-Zeitreihe kleinräumig für Trendvergleiche.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land BW. HTTP 200. Ebene Stadtteil.
+### bw-reutlingen-ob-stadtteile
+- Name: Reutlingen OB-Wahl nach Stadtteilen
+- Betreiber: Stadt Reutlingen / ReADI Open Data
+- Thema: Wahlen
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://opendata.readi.de/dataset/25481d73-253f-4631-9faa-71faeac31c5f/resource/927db415-d822-4951-93ec-52fa9f13fc79/download/open-data-08216043-wahl-des-oberbuergermeisters-der-oberbuergermeisterin-stadtteile.csv
+- Lizenz: dl-de/by-2-0
+- Stand: aktuell
+- Aktualität: Neu
+- Inhalt: OB-Wahlergebnis je Stadtteil Reutlingen (erster Wahlgang).
+- Warum spannend: Ergänzt Stichwahl-CSV für vollständigen OB-Vergleich Stadtteile.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land BW. HTTP 200. Ebene Stadtteil.
+### bw-reutlingen-ob-stichwahl-stadtteile
+- Name: Reutlingen OB-Stichwahl nach Stadtteilen
+- Betreiber: Stadt Reutlingen / ReADI Open Data
+- Thema: Wahlen
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://opendata.readi.de/dataset/4363df61-efb8-483a-8c81-beebaea95b5c/resource/b34b15e3-0287-4293-887e-3b83a2da94d6/download/open-data-08216043-stichwahl-zur-wahl-des-oberbuergermeisters-der-oberbuergermeisterin-stadtteil.csv
+- Lizenz: dl-de/by-2-0
+- Stand: aktuell
+- Aktualität: Neu
+- Inhalt: OB-Stichwahl-Ergebnisse je Stadtteil Reutlingen.
+- Warum spannend: Kommunale Stichwahl kleinräumig für Wahlanalyse.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land BW. HTTP 200. Ebene Stadtteil.
+### by-muenchen-ob-wahl-2020
+- Name: München OB-Wahl 2020 amtliche Ergebnisse
+- Betreiber: Landeshauptstadt München / wahlen-muenchen.de
+- Thema: Wahlen
+- Ebene: gemischt
+- Format: ZIP
+- URL: https://www.wahlen-muenchen.de/ergebnisse/20200315oberbuergermeisterwahl/OBW2020amtlichesErg.zip
+- Lizenz: open (Landeshauptstadt München / Wahlen)
+- Stand: 2020-03-15
+- Aktualität: Neu
+- Inhalt: Amtliche OB-Wahlergebnisse 2020 (Stimmbezirk/Stadt).
+- Warum spannend: Vergleichsbasis zu OB 2026 und anderen Kommunalwahlen München.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land BY. HTTP 200.
+### by-muenchen-ob-wahl-2026
+- Name: München OB-Wahl 2026 Endergebnisse
+- Betreiber: Landeshauptstadt München / wahlen-muenchen.de
+- Thema: Wahlen
+- Ebene: gemischt
+- Format: ZIP
+- URL: https://www.wahlen-muenchen.de/ergebnisse/20260308oberbuergermeisterwahl/endergebnisse_obwahl.zip
+- Lizenz: open (Landeshauptstadt München / Wahlen)
+- Stand: 2026-03-08
+- Aktualität: Neu
+- Inhalt: Amtliche Endergebnisse OB-Wahl München 2026 (Stimmbezirk/Stadt).
+- Warum spannend: Frische Kommunalwahl 2026 für Wahl-Dashboard und Zeitvergleich zu 2020.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land BY. HTTP 200.
+### by-muenchen-stadtrat-2020
+- Name: München Stadtratswahl 2020 amtliche Ergebnisse
+- Betreiber: Landeshauptstadt München / wahlen-muenchen.de
+- Thema: Wahlen
+- Ebene: gemischt
+- Format: ZIP
+- URL: https://www.wahlen-muenchen.de/ergebnisse/20200315stadtratswahl/SRW2020amtlichesErg.zip
+- Lizenz: open (Landeshauptstadt München / Wahlen)
+- Stand: 2020-03-15
+- Aktualität: Neu
+- Inhalt: Amtliche Stadtratswahl-Ergebnisse München 2020.
+- Warum spannend: Kommunale Parteienlandschaft feinräumig neben OB-Ergebnissen.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land BY. HTTP 200.
+### he-est-gemeinden-73111
+- Name: Hessen Lohn-/Einkommensteuer Gemeinden (73111-01-01-5)
+- Betreiber: Destatis Regionalstatistik
+- Thema: Einkommen
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://www.regionalstatistik.de/genesisws/downloader/06/tables/73111-01-01-5_06.csv
+- Lizenz: dl-de/by-2-0
+- Stand: aktuell
+- Aktualität: Neu
+- Inhalt: Lohn-/Einkommensteuerstatistik Gemeinden Hessen (Tabelle 73111-01-01-5).
+- Warum spannend: Gemeindescharfes Einkommen Hessen für Ranking/Join über AGS.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land HE. HTTP 200.
+### he-realsteuer-hebesaetze-71231
+- Name: Hessen Realsteuer/Hebesätze Gemeinden (71231-01-03-5)
+- Betreiber: Destatis Regionalstatistik
+- Thema: Wirtschaft
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://www.regionalstatistik.de/genesisws/downloader/06/tables/71231-01-03-5_06.csv
+- Lizenz: dl-de/by-2-0
+- Stand: aktuell
+- Aktualität: Neu
+- Inhalt: IST-Aufkommen, Hebesätze, Realsteueraufbringungskraft je Gemeinde Hessen (71231-01-03-5).
+- Warum spannend: Kommunale Steuerkraft/Hebesätze für Wirtschafts- und Finanzvergleich.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land HE. HTTP 200.
+### hh-bevoelkerung-stadtteile-wfs-csv
+- Name: Hamburg Bevölkerung Stadtteile (WFS→CSV Download)
+- Betreiber: Stadt Hamburg / Geodienste
+- Thema: Demografie
+- Ebene: Gemeinde
+- Format: CSV/ZIP
+- URL: https://geodienste.hamburg.de/download?url=https://geodienste.hamburg.de/HH_WFS_Statistik_Stadtteile_Bevoelkerung&f=csv
+- Lizenz: dl-de/by-2-0
+- Stand: aktuell
+- Aktualität: Neu
+- Inhalt: Stadtteil-Bevölkerung inkl. Geometrie/Attribute via Geodienste-Download-API aus WFS.
+- Warum spannend: Maschinenlesbare Stadtteil-Bevölkerung HH für Demografie-Joins.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land HH. HTTP 200. Ebene Stadtteil.
+### hh-stadtteilprofile-2017
+- Name: Stadtteil-Profile Hamburg Berichtsjahr 2017
+- Betreiber: Statistikamt Nord
+- Thema: Demografie
+- Ebene: Gemeinde
+- Format: XLSX
+- URL: https://www.statistik-nord.de/fileadmin/Dokumente/Datenbanken_und_Karten/Stadtteilprofile/StadtteilprofileBerichtsjahr2017.xlsx
+- Lizenz: dl-de/by-2-0
+- Stand: 2017
+- Aktualität: Neu
+- Inhalt: Kompakte Stadtteil-Indikatoren Hamburg (Statistikamt Nord), Berichtsjahr 2017.
+- Warum spannend: Historische Stadtteil-Baseline neben aktuellen HH-WFS-Bevölkerungslayern.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land HH. HTTP 200. Ebene Stadtteil.
+### ni-no2-vorbelastung-2011-raster
+- Name: Niedersachsen NO2-Vorbelastung 2011 Raster
+- Betreiber: NUMIS / Land Niedersachsen
+- Thema: Umwelt
+- Ebene: Raster
+- Format: ZIP
+- URL: https://numis.niedersachsen.de/documents-ige-ng/ouk_ni/5896eeb3-1858-4473-ad3d-db6e3f333b51/NO2_Immission_2.zip
+- Lizenz: dl-de/by-2-0
+- Stand: 2011
+- Aktualität: Neu
+- Inhalt: Stickstoffdioxid-Vorbelastungsraster Niedersachsen (NUMIS).
+- Warum spannend: Ergänzt land-ni-pm10-2025 und UBA-Luftqualität um NO2-Historie NI.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land NI. HTTP 200.
+### ni-o3-vorbelastung-2011-raster
+- Name: Niedersachsen O3-Vorbelastung 2011 Raster
+- Betreiber: NUMIS / Land Niedersachsen
+- Thema: Umwelt
+- Ebene: Raster
+- Format: ZIP
+- URL: https://numis.niedersachsen.de/documents-ige-ng/ouk_ni/231a3884-e192-4783-bfbf-fa574f6955e1/O3_Immission_2.zip
+- Lizenz: dl-de/by-2-0
+- Stand: 2011
+- Aktualität: Neu
+- Inhalt: Ozon-Vorbelastungsraster Niedersachsen (NUMIS).
+- Warum spannend: Zweite Luftqualitäts-Achse NI neben NO2 und PM10.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land NI. HTTP 200.
+### nw-bochum-btw2025-gemeinde
+- Name: Bochum Bundestagswahl 2025 Gemeindeergebnis
+- Betreiber: Stadt Bochum / Open Data Ruhr
+- Thema: Wahlen
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://bochum.opendata.ruhr/dataset/3bc8bc94-e190-4e53-b656-c6765c7da586/resource/0b6b6536-2f98-4658-bbf8-3c762039fed2/download/bochum_open-data-05911000-wahl-zum-deutschen-bundestag-gemeinde.csv
+- Lizenz: dl-de/by-2-0
+- Stand: 2025-02-23
+- Aktualität: Neu
+- Inhalt: BTW-2025-Gemeindeergebnis Bochum inkl. Schnellmeldungsfelder (CSV).
+- Warum spannend: Frisches kommunales BTW-2025-Ergebnis für Wahl-Dashboard/Vergleich.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land NW. HTTP 200.
+### nw-duesseldorf-pks-faelle-tatverdachtige
+- Name: Düsseldorf PKS Fälle/Tatverdächtige seit 2014
+- Betreiber: Stadt Düsseldorf
+- Thema: Sicherheit
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://opendata.duesseldorf.de/sites/default/files/aufgekl%C3%A4rte%20F%C3%A4lle%20sowie%20Tatverd%C3%A4chtige%20in%20D%C3%BCsseldorf%202014_6.csv
+- Lizenz: dl-de/by-2-0
+- Stand: 2014+
+- Aktualität: Neu
+- Inhalt: Bekannt gewordene/aufgeklärte Fälle sowie Tatverdächtige nach Altersgruppen (Zeitreihe ab 2014).
+- Warum spannend: Kommunale PKS-Zeitreihe für Sicherheits-Dashboard (stadtweit).
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land NW. HTTP 200.
+### nw-essen-wahlberechtigte-stadtteile
+- Name: Essen potenziell Wahlberechtigte nach Stadtteilen
+- Betreiber: Stadt Essen
+- Thema: Wahlen
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://opendata.essen.de/sites/default/files/Anzahl%20der%20potenziell%20Wahlberechtigten%20in%20den%20Stadtteilen%20ab%202016_2.csv
+- Lizenz: dl-de/by-2-0
+- Stand: 2016+
+- Aktualität: Neu
+- Inhalt: Zeitreihe potenziell Wahlberechtigter je Stadtteil Essen ab 2016.
+- Warum spannend: Wahl-/Bevölkerungsbasis kleinräumig für Beteiligungsvergleiche.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land NW. HTTP 200. Ebene Stadtteil.
+### nw-koeln-opferzahlen-straftat-2018
+- Name: Köln Opferzahlen nach Straftat 2018
+- Betreiber: Stadt Köln / offenedaten-koeln
+- Thema: Sicherheit
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://www.offenedaten-koeln.de/sites/default/files/distribution/Opferzahlen_nach_Straftat_2018.csv
+- Lizenz: dl-de/by-2-0
+- Stand: 2018
+- Aktualität: Neu
+- Inhalt: Opferzahlen nach Straftat, stadtweit Köln, maschinenlesbar.
+- Warum spannend: Kommunaler Sicherheitsindikator (Opferseite) neben PKS-Fallzahlen.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land NW. HTTP 200.
+### nw-ldb-est-73111-010i
+- Name: LDB NRW Lohn-/Einkommensteuer 73111-010i Gemeinden
+- Betreiber: Landesdatenbank NRW
+- Thema: Einkommen
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/73111-010i_00.csv
+- Lizenz: dl-de/by-2-0
+- Stand: aktuell
+- Aktualität: Neu
+- Inhalt: Steuerpflichtige/Gesamtbetrag der Einkünfte Gemeindeebene NRW (Tabelle 73111-010i). Andere Tabellen-ID als land-nw-ldb-est-73111 (316i).
+- Warum spannend: Gemeindescharfes Einkommen NRW — zweite LDB-Tabelle neben 316i.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land NW. HTTP 200. Dedup-Hinweis: land-nw-ldb-est-73111 = 316i.
+### nw-muenster-wohnberechtigte-wahlbezirke-2021
+- Name: Münster wohnberechtigte Bevölkerung in Wahlbezirken
+- Betreiber: Stadt Münster
+- Thema: Demografie
+- Ebene: gemischt
+- Format: XLSX
+- URL: https://opendata.stadt-muenster.de/sites/default/files/Wohnberechtigte-Bevoelkerung-der-Wahlbezirke-Muenster-2020-12-31.xlsx
+- Lizenz: dl-de/by-2-0
+- Stand: 2020-12-31
+- Aktualität: Neu
+- Inhalt: Wohnberechtigte Bevölkerung je Wahlbezirk Münster (Stichtag 2020-12-31).
+- Warum spannend: Kleinräumige Bevölkerungsbasis für Wahl-/Sozialanalysen.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land NW. HTTP 200. Dateiname 2020-12-31; ID trägt 2021-Kontext aus Crawl.
+### nw-recklinghausen-alter-stadtteile-2025
+- Name: Recklinghausen Bevölkerung Alter Stadtteile 2025
+- Betreiber: Stadt Recklinghausen / Open Data Ruhr
+- Thema: Demografie
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://opendata.ruhr/dataset/bef32fa5-9bba-4707-a94b-34819c51e604/resource/56757c15-4207-4aee-9696-ae3140ffbc37/download/2025_bevolkerung_alter_stadtteile_re.csv
+- Lizenz: dl-de/by-2-0
+- Stand: 2025
+- Aktualität: Neu
+- Inhalt: Altersstruktur Bevölkerung je Stadtteil Recklinghausen 2025.
+- Warum spannend: Frische Stadtteil-Demografie für lokale Vergleiche im Ruhrgebiet.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land NW. HTTP 200. Ebene Stadtteil.
+### nw-recklinghausen-dichte-stadtteile-2025
+- Name: Recklinghausen Einwohnerdichte Stadtteile 2025
+- Betreiber: Stadt Recklinghausen / Open Data Ruhr
+- Thema: Demografie
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://opendata.ruhr/dataset/cb9e9412-5158-4af5-8647-6ced7d6d17e1/resource/11e8d268-1a53-40bb-aaa0-8bd314bb859f/download/2025_bevolkerung_einwohnerdichte_stadtteile_re.csv
+- Lizenz: dl-de/by-2-0
+- Stand: 2025
+- Aktualität: Neu
+- Inhalt: Einwohnerdichte je Stadtteil Recklinghausen 2025.
+- Warum spannend: Dichte-Layer neben Altersstruktur für Stadtteil-Dashboard.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land NW. HTTP 200. Ebene Stadtteil.
+### nw-zensusatlas-2011-1km-gitter
+- Name: NRW OpenGeodata Zensusatlas 2011 1km-Gitter
+- Betreiber: Open.NRW / IT.NRW
+- Thema: Demografie
+- Ebene: Raster
+- Format: CSV (~20 MB)
+- URL: https://www.opengeodata.nrw.de/produkte/bevoelkerung/zensus2011/ergebnisse_1km-gitter/ZensusKlassiert1km-Gitter_EPSG3035_CSV.csv
+- Lizenz: dl-de/by-2-0
+- Stand: 2011
+- Aktualität: Neu
+- Inhalt: Klassierte Zensus-2011-Merkmale auf 1-km-Gitter (EPSG:3035).
+- Warum spannend: Historisches Raster-Demografie-Layer NRW neben Zensus-2022-Gitter.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land NW. HTTP 200.
+### sn-dresden-alleinerziehende-stadtteil-2025
+- Name: Dresden Haushalte Alleinerziehende Stadtteil 2025
+- Betreiber: Stadt Dresden
+- Thema: Soziales
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://opendata.dresden.de/dcat-ap/dataset/de-sn-dresden-einwohner_-_haushalte_md233_2025_od_bevoelkerung_ab_stadtteil_haushalttyp_alleinerziehende_/content.csv
+- Lizenz: dl-de/by-2-0
+- Stand: 2025
+- Aktualität: Neu
+- Inhalt: Alleinerziehende Haushalte je Stadtteil Dresden.
+- Warum spannend: Sozialindikator kleinräumig neben Alterspyramide.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land SN. HTTP 200. Ebene Stadtteil.
+### sn-dresden-einwohner-alter-stadtteil-2025
+- Name: Dresden Einwohner Altersklassen Stadtteil 2025
+- Betreiber: Stadt Dresden
+- Thema: Demografie
+- Ebene: Gemeinde
+- Format: CSV
+- URL: https://opendata.dresden.de/dcat-ap/dataset/de-sn-dresden-einwohner___md_21e_2025_-_3112_od_bevoelkerung__ab_stadtteil_hauptwohner_13_altersklassen/content.csv
+- Lizenz: dl-de/by-2-0
+- Stand: 2025-12-31
+- Aktualität: Neu
+- Inhalt: Hauptwohnsitz-Bevölkerung nach 13 Altersklassen je Stadtteil Dresden.
+- Warum spannend: Stadtteil-Alterspyramide für Demografie-Dashboard und lokale Vergleiche.
+- Status: verifiziert
+- Notizen: Mail 2026-09-08. Land SN. HTTP 200. Ebene Stadtteil (unter Gemeinde).
+
 ## Index nach Thema
 
-- **Demografie:** kern-zensus-gitter, kern-zensus-regional, kern-regionalstatistik-api, land-sh-regional-bev, land-he-offenbach-zensus, land-be-lor-shapefiles
-- **Einkommen:** upd-vgrdl-einkommen, upd-vgrdl-loehne, nisch-ldb-nrw-einkommen, land-sh-est-gemeinden, land-nw-ldb-est-73111, land-rp-meine-heimat-api
-- **Soziales:** upd-sgb2-aug2026, upd-ba-api-grusi, nisch-ldb-nrw-sgbxii, nisch-hh-sozialmon-2025, land-nw-duesseldorf-quartiersatlas-2024, land-by-muenchen-sgb2-alter, land-he-darmstadt-sgb2-q1, land-bw-freiburg-armutsgefaehrdung
+- **Demografie:** kern-zensus-gitter, kern-zensus-regional, kern-regionalstatistik-api, land-sh-regional-bev, land-he-offenbach-zensus, land-be-lor-shapefiles, sn-dresden-einwohner-alter-stadtteil-2025, be-gender-datenreport-2023-bevoelkerung, hh-bevoelkerung-stadtteile-wfs-csv, nw-muenster-wohnberechtigte-wahlbezirke-2021, nw-zensusatlas-2011-1km-gitter, nw-recklinghausen-alter-stadtteile-2025, nw-recklinghausen-dichte-stadtteile-2025, hh-stadtteilprofile-2017
+- **Einkommen:** upd-vgrdl-einkommen, upd-vgrdl-loehne, nisch-ldb-nrw-einkommen, land-sh-est-gemeinden, land-nw-ldb-est-73111, land-rp-meine-heimat-api, he-est-gemeinden-73111, nw-ldb-est-73111-010i
+- **Soziales:** upd-sgb2-aug2026, upd-ba-api-grusi, nisch-ldb-nrw-sgbxii, nisch-hh-sozialmon-2025, land-nw-duesseldorf-quartiersatlas-2024, land-by-muenchen-sgb2-alter, land-he-darmstadt-sgb2-q1, land-bw-freiburg-armutsgefaehrdung, sn-dresden-alleinerziehende-stadtteil-2025
 - **Bildung:** nisch-bildungsmonitoring, nisch-nrw-schulen, nisch-he-bildungsatlas, land-sl-schulen, land-sl-kiga, land-sn-asv-csv, land-by-muenchen-kita, land-hb-kita
 - **Gesundheit:** nisch-ldb-nrw-pflege, nisch-ldb-nrw-kh, nisch-zi-versorgungsatlas, land-sn-kh-diagnosen, land-sl-apotheken, land-sl-krankenhaeuser, land-th-krankenhaus, land-ni-pm10-2025
-- **Wirtschaft:** upd-vgrdl-bip, upd-destatis-realsteuer, upd-destatis-schulden, nisch-tourismus-45412, nisch-gewerbe-52311, nisch-urs-52111, land-sn-gewerbe-an, land-sn-ust-kreise, land-sh-kreismonitor, land-sh-gewerbe-2026q2
+- **Wirtschaft:** upd-vgrdl-bip, upd-destatis-realsteuer, upd-destatis-schulden, nisch-tourismus-45412, nisch-gewerbe-52311, nisch-urs-52111, land-sn-gewerbe-an, land-sn-ust-kreise, land-sh-kreismonitor, land-sh-gewerbe-2026q2, he-realsteuer-hebesaetze-71231
 - **Arbeitsmarkt:** upd-ba-api-alo, upd-ba-api-bst, nisch-erwerb-13312, nisch-ldb-nrw-alo-gem, land-sn-svb-kreise, land-by-muenchen-svb, land-by-muenchen-alo
 - **Wohnen:** upd-baufertig-2024, nisch-zensus-arcgis, land-sn-baufertig-heiz, land-st-brw-2026, land-st-hausumringe, land-bb-boris-brw, land-th-hu-zip, land-bw-stuttgart-wohnungsbestand, land-nw-dortmund-mietspiegel
-- **Energie:** upd-mastr-export, upd-kraftwerksliste-2026, upd-bnetza-lps, nisch-uba-eneff-waerme, nisch-energy-charts, nisch-by-energieatlas, land-hh-waermenetz-kwp, land-nw-grundversorger-gas, land-sl-ladestationen, land-sl-evu-wasser
-- **Klima:** kern-dwd-duerre, nisch-dwd-hitzetage, nisch-dwd-strahlung, land-st-s2-raster
-- **Umwelt:** nisch-eba-laerm, nisch-hwrm, nisch-clc2018, nisch-erosion, nisch-o3, nisch-pm25, land-hh-laermkarten, land-ni-umweltzonen, land-bb-schutzgebiete, land-th-trinkwasser, land-mv-uferlinie
+- **Energie:** upd-mastr-export, upd-kraftwerksliste-2026, upd-bnetza-lps, nisch-uba-eneff-waerme, nisch-energy-charts, nisch-by-energieatlas, land-hh-waermenetz-kwp, land-nw-grundversorger-gas, land-sl-ladestationen, land-sl-evu-wasser, nisch-fr-waermekataster-wms, nisch-hh-waermebedarf, nisch-hh-stromverbrauch-waermekataster, nisch-cham-gebaeude-waermekataster, nisch-nw-ee-potenziale, nisch-nw-strom-vwe, nisch-nw-waerme-vwe, nisch-nw-ee-gpkg, nisch-nw-dachpv-gemeinde, nisch-nw-standorte-strom-waerme, nisch-sl-waermekataster-wfs, nisch-uba-eeg-rnr-2026, nisch-uba-eneff-kaelte, nisch-uba-waermedichte-kreis, nisch-uba-wkv-kreis
+- **Klima:** kern-dwd-duerre, nisch-dwd-hitzetage, nisch-dwd-strahlung, land-st-s2-raster, upd-dwd-duerre-202608, upd-dwd-niederschlag-202608, upd-dwd-sonne-202608, nisch-uba-heisse-tage, nisch-uba-tropennaechte
+- **Umwelt:** nisch-eba-laerm, nisch-hwrm, nisch-clc2018, nisch-erosion, nisch-o3, nisch-pm25, land-hh-laermkarten, land-ni-umweltzonen, land-bb-schutzgebiete, land-th-trinkwasser, land-mv-uferlinie, nisch-uba-n-tj2026, nisch-uba-nfbuie-kreis, nisch-uba-pm10-annual, nisch-uba-soes-kreis, ni-no2-vorbelastung-2011-raster, ni-o3-vorbelastung-2011-raster
 - **Mobilität:** upd-kwm-2024, upd-kba-fz1, upd-ba-pendler, kern-bmdv-mobilithek, nisch-vbb-gtfs, nisch-bw-svz-2024, land-sn-baustellen-geojson, land-hh-bike-ride, land-be-infravelo, land-sl-oepnv, land-sh-unfaelle-2025
-- **Sicherheit:** kern-bka-pks, kern-destatis-unfallatlas
-- **Wahlen:** kern-ew24, nisch-ltw-by-2023, nisch-ltw-th-2024, land-rp-ltw2026-stimmbezirk, land-hh-wahlen-stadtteile, land-he-ltw-gemeinden-14336, land-sl-ltw2022-kerg, land-bw-heidelberg-ltw26
+- **Sicherheit:** kern-bka-pks, kern-destatis-unfallatlas, nw-duesseldorf-pks-faelle-tatverdachtige, nw-koeln-opferzahlen-straftat-2018
+- **Wahlen:** kern-ew24, nisch-ltw-by-2023, nisch-ltw-th-2024, land-rp-ltw2026-stimmbezirk, land-hh-wahlen-stadtteile, land-he-ltw-gemeinden-14336, land-sl-ltw2022-kerg, land-bw-heidelberg-ltw26, nisch-bwl-btw25-umrechnung, nisch-bwl-btw25-wbz, nisch-bwl-ew24-kreise, nisch-bwl-ew24-strukturdaten, nw-bochum-btw2025-gemeinde, nw-essen-wahlberechtigte-stadtteile, bw-konstanz-gemeinderat-stadtteile, by-muenchen-ob-wahl-2020, by-muenchen-ob-wahl-2026, by-muenchen-stadtrat-2020, bw-reutlingen-ob-stichwahl-stadtteile, bw-reutlingen-ob-stadtteile
 - **Geobasis:** kern-vg250, upd-destatis-anschriften, nisch-ge250, nisch-inkar-ror, land-by-alkis-verwaltung, land-ni-lgln-vwg-wfs, land-sn-vwg-shape, land-st-dvg-alkis, land-th-vg-zip, land-rp-gemeinden-shapezip, land-mv-dvg-zip, land-be-lor-shapefiles, land-bb-gazetteer-gemeinden, land-sh-atkis-vwg-wfs
 - **Sonstiges (Digital/Katalog):** upd-breitbandatlas-2025, upd-breitband-gitter, upd-bnetza-mobilfunk, nisch-pvog, kern-govdata-ckan, kern-inkar-2025, kern-genesis-api, D-Portale, E land-*
